@@ -270,14 +270,14 @@ const Navbar = () => {
           <div className="flex items-center">
             <NavLink
               to="/login"
-              className="btn border hidden border-[#219EBC] text-[#023047] bg-white hover:bg-[#8ECAE6] hover:text-black rounded-md transition md:flex items-center gap-2"
+              className="btn border hidden border-[#219EBC] text-[#023047] bg-white hover:bg-[#023047] hover:text-white rounded-md transition md:flex items-center gap-2"
             >
               <FaSignInAlt /> LogIn
             </NavLink>
 
             <NavLink
               to="/signup"
-              className="btn border border-[#FB8500] bg-[#FB8500] text-white hover:bg-[#FFB703] ml-3 inline-flex items-center gap-2 md:px-4 px-2 py-1 text-sm"
+              className="btn border border-[#FB8500] bg-[#FB8500] text-white hover:bg-[#023047] hover:text-white ml-3 inline-flex items-center gap-2 md:px-4 px-2 py-1 text-sm"
             >
               <FaUserPlus />
               <span className="hidden md:inline">SignUp</span>
