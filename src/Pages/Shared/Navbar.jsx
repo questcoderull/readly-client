@@ -15,7 +15,7 @@ const Navbar = () => {
   const [user, setUser] = useState(false);
   const [loading, setLoading] = useState(false);
   return (
-    <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50 ">
+    <div className="navbar bg-transparent shadow-sm sticky top-0 z-50 py-5">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -43,61 +43,90 @@ const Navbar = () => {
             <li className="group border rounded-md mb-1 transition-colors duration-300 ease-in-out hover:bg-[#023047]">
               <NavLink
                 to="/"
-                className="flex items-center space-x-2 px-3 py-2 text-[#003049] group-hover:text-white transition-colors duration-300 ease-in-out w-full"
+                className={({ isActive }) =>
+                  `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
+                    isActive
+                      ? "bg-[#023047] text-white"
+                      : "text-[#003049] group-hover:text-white"
+                  }`
+                }
               >
-                <FaHome className="text-[#003049] group-hover:text-white transition-colors duration-300 ease-in-out" />
+                <FaHome className="text-current transition-colors duration-300 ease-in-out" />
                 <span>Home</span>
               </NavLink>
             </li>
 
             <li className="group border rounded-md mb-1 transition-colors duration-300 ease-in-out hover:bg-[#023047]">
               <NavLink
-                to="/"
-                className="flex items-center space-x-2 px-3 py-2 text-[#0077a3] group-hover:text-white transition-colors duration-300 ease-in-out w-full"
+                to="/add-blog"
+                className={({ isActive }) =>
+                  `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
+                    isActive
+                      ? "bg-[#023047] text-white"
+                      : "text-[#0077a3] group-hover:text-white"
+                  }`
+                }
               >
-                <FaPlus className="text-[#0077a3] group-hover:text-white transition-colors duration-300 ease-in-out" />
+                <FaPlus className="text-current transition-colors duration-300 ease-in-out" />
                 <span>Add Blog</span>
               </NavLink>
             </li>
 
             <li className="group border rounded-md mb-1 transition-colors duration-300 ease-in-out hover:bg-[#023047]">
               <NavLink
-                to="/"
-                className="flex items-center space-x-2 px-3 py-2 text-[#669BBC] group-hover:text-white transition-colors duration-300 ease-in-out w-full"
+                to="/all-blogs"
+                className={({ isActive }) =>
+                  `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
+                    isActive
+                      ? "bg-[#023047] text-white"
+                      : "text-[#669BBC] group-hover:text-white"
+                  }`
+                }
               >
-                <FaBlog className="text-[#669BBC] group-hover:text-white transition-colors duration-300 ease-in-out" />
+                <FaBlog className="text-current transition-colors duration-300 ease-in-out" />
                 <span>All Blogs</span>
               </NavLink>
             </li>
 
             <li className="group border rounded-md mb-1 transition-colors duration-300 ease-in-out hover:bg-[#023047]">
               <NavLink
-                to="/"
-                className="flex items-center space-x-2 px-3 py-2 text-[#F77F00] group-hover:text-white transition-colors duration-300 ease-in-out w-full"
+                to="/featured-blogs"
+                className={({ isActive }) =>
+                  `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
+                    isActive
+                      ? "bg-[#023047] text-white"
+                      : "text-[#F77F00] group-hover:text-white"
+                  }`
+                }
               >
-                <FaStar className="text-[#F77F00] group-hover:text-white transition-colors duration-300 ease-in-out" />
+                <FaStar className="text-current transition-colors duration-300 ease-in-out" />
                 <span>Featured Blogs</span>
               </NavLink>
             </li>
 
             <li className="group border rounded-md transition-colors duration-300 ease-in-out hover:bg-[#023047]">
               <NavLink
-                to="/"
-                className="flex items-center space-x-2 px-3 py-2 text-[#D62828] group-hover:text-white transition-colors duration-300 ease-in-out w-full"
+                to="/wishlist"
+                className={({ isActive }) =>
+                  `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
+                    isActive
+                      ? "bg-[#023047] text-white"
+                      : "text-[#D62828] group-hover:text-white"
+                  }`
+                }
               >
-                <FaHeart className="text-[#D62828] group-hover:text-white transition-colors duration-300 ease-in-out" />
+                <FaHeart className="text-current transition-colors duration-300 ease-in-out" />
                 <span>Wishlist</span>
               </NavLink>
             </li>
           </ul>
         </div>
         <div class="navbar-start">
-          <Link
-            to="/"
-            class="btn btn-ghost normal-case text-xl flex items-center gap-2"
-          >
+          <Link to="/" class=" normal-case text-xl flex items-center">
             <img src={logo} alt="Readly logo" class="h-8 w-auto" />
-            <span className="hidden md:block">Readly</span>
+            <span className="hidden md:block text-[#FB8500] text-3xl font-bold">
+              eadly
+            </span>
           </Link>
         </div>
       </div>
@@ -106,45 +135,79 @@ const Navbar = () => {
           <li className="group border rounded-md mr-3 hover:bg-[#023047] transition-colors duration-300 ease-in-out flex items-center">
             <NavLink
               to="/"
-              className="flex items-center w-full text-[#003049] group-hover:text-white transition-colors duration-300 ease-in-out"
+              className={({ isActive }) =>
+                `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
+                  isActive
+                    ? "bg-[#023047] text-white"
+                    : "text-[#003049] hover:text-white"
+                }`
+              }
             >
-              <FaHome className="mr-2 text-[#003049] group-hover:text-white transition-colors duration-300 ease-in-out" />
+              <FaHome className="mr-2 text-current transition-colors duration-300" />
               Home
             </NavLink>
           </li>
+
           <li className="group border rounded-md mr-3 hover:bg-[#023047] transition-colors duration-300 ease-in-out flex items-center">
             <NavLink
-              to="/"
-              className="flex items-center w-full text-[#0077a3] group-hover:text-white transition-colors duration-300 ease-in-out"
+              to="/add-blog"
+              className={({ isActive }) =>
+                `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
+                  isActive
+                    ? "bg-[#023047] text-white"
+                    : "text-[#0077a3] hover:text-white"
+                }`
+              }
             >
-              <FaPlus className="mr-2 text-[#0077a3] group-hover:text-white transition-colors duration-300 ease-in-out" />
+              <FaPlus className="mr-2 text-current transition-colors duration-300" />
               Add Blog
             </NavLink>
           </li>
+
           <li className="group border rounded-md mr-3 hover:bg-[#023047] transition-colors duration-300 ease-in-out flex items-center">
             <NavLink
-              to="/"
-              className="flex items-center w-full text-[#669BBC] group-hover:text-white transition-colors duration-300 ease-in-out"
+              to="/all-blogs"
+              className={({ isActive }) =>
+                `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
+                  isActive
+                    ? "bg-[#023047] text-white"
+                    : "text-[#669BBC] hover:text-white"
+                }`
+              }
             >
-              <FaBlog className="mr-2 text-[#669BBC] group-hover:text-white transition-colors duration-300 ease-in-out" />
+              <FaBlog className="mr-2 text-current transition-colors duration-300" />
               All Blogs
             </NavLink>
           </li>
+
           <li className="group border rounded-md mr-3 hover:bg-[#023047] transition-colors duration-300 ease-in-out flex items-center">
             <NavLink
-              to="/"
-              className="flex items-center w-full text-[#F77F00] group-hover:text-white transition-colors duration-300 ease-in-out"
+              to="/featured-blogs"
+              className={({ isActive }) =>
+                `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
+                  isActive
+                    ? "bg-[#023047] text-white"
+                    : "text-[#F77F00] hover:text-white"
+                }`
+              }
             >
-              <FaStar className="mr-2 text-[#F77F00] group-hover:text-white transition-colors duration-300 ease-in-out" />
+              <FaStar className="mr-2 text-current transition-colors duration-300" />
               Featured Blogs
             </NavLink>
           </li>
+
           <li className="group border rounded-md hover:bg-[#023047] transition-colors duration-300 ease-in-out flex items-center">
             <NavLink
-              to="/"
-              className="flex items-center w-full text-[#D62828] group-hover:text-white transition-colors duration-300 ease-in-out"
+              to="/wishlist"
+              className={({ isActive }) =>
+                `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
+                  isActive
+                    ? "bg-[#023047] text-white"
+                    : "text-[#D62828] hover:text-white"
+                }`
+              }
             >
-              <FaHeart className="mr-2 text-[#D62828] group-hover:text-white transition-colors duration-300 ease-in-out" />
+              <FaHeart className="mr-2 text-current transition-colors duration-300" />
               Wishlist
             </NavLink>
           </li>
