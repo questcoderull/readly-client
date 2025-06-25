@@ -1,9 +1,17 @@
 import { createBrowserRouter } from "react-router";
+import RootLayouts from "../Layouts/RootLayouts";
+import SemothingWentWrong from "../Pages/ErrorPages/SemothingWentWrong";
+import PageNOtFound from "../Pages/ErrorPages/PageNOtFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello World</div>,
+    Component: RootLayouts,
+    errorElement: <SemothingWentWrong></SemothingWentWrong>,
+  },
+  {
+    path: "/*",
+    Component: PageNOtFound,
   },
 ]);
 
