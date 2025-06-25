@@ -15,7 +15,7 @@ const Navbar = () => {
   const [user, setUser] = useState(false);
   const [loading, setLoading] = useState(false);
   return (
-    <div className="navbar bg-transparent shadow-sm sticky top-0 z-50 py-5">
+    <div className="navbar sticky top-0 z-50 py-5 bg-white/30 backdrop-blur-md  ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
