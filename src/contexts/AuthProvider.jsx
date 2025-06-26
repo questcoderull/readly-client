@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { AuthContext } from "./AuthContext";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
 import { auth } from "../firebase/firebase.init";
 
 const AuthProvider = ({ children }) => {
@@ -11,21 +15,29 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  const logInUser = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  //   side effects
   const playSoundSuccess = () => {
     const audio = new Audio("/sound.wav");
     audio.play();
   };
 
   const playSoundAlert = () => {
-    const audio = new Audio("/alert.wav");
+    const audio = new Audio("/nitification.mp3");
     audio.play();
   };
+
   const authInfo = {
     playSoundSuccess,
     playSoundAlert,
     loading,
     setLoading,
     createUser,
+    logInUser,
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;

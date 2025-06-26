@@ -4,6 +4,7 @@ import SemothingWentWrong from "../Pages/ErrorPages/SemothingWentWrong";
 import PageNOtFound from "../Pages/ErrorPages/PageNOtFound";
 import Home from "../Pages/Home/Home";
 import Register from "../Pages/Register/Register";
+import SignIn from "../Pages/signin/SignIn";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
+      },
+      {
+        path: "/logIn",
+        Component: SignIn,
       },
     ],
   },
