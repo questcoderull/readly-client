@@ -1,8 +1,11 @@
-import React from "react";
+import React, { use } from "react";
 import resterAnimation from "../../assets/register.json";
 import Lottie from "lottie-react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Register = () => {
+  const { createUser, loading } = use(AuthContext);
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,7 +15,17 @@ const Register = () => {
     const photo = form.photo.value;
     const password = form.password.value;
 
-    console.log(name, email, photo, password);
+    // console.log(name, email, photo, password);
+
+    // creating user
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
