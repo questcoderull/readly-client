@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import {
   FaHome,
@@ -11,10 +11,40 @@ import {
 } from "react-icons/fa";
 import logo from "../../assets/readly.png";
 import { AuthContext } from "../../contexts/AuthContext";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const { user, loading } = use(AuthContext);
+  const { user, loading, logOutUser, playSoundSuccess, playSoundAlert } =
+    use(AuthContext);
 
+  const handleSignOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to  logOut??",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logOut",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOutUser()
+          .then(() => {
+            playSoundSuccess();
+            toast.success("Logged out successfully");
+          })
+          .catch((error) => {
+            playSoundAlert();
+            Swal.fire({
+              title: `${error.code}`,
+              icon: "error",
+              draggable: true,
+            });
+          });
+      }
+    });
+  };
   return (
     <div className="navbar sticky top-0 z-50 py-5 bg-white/30 backdrop-blur-md  ">
       <div className="navbar-start">
@@ -286,10 +316,14 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-3 shadow border border-blue-400"
             >
               <li className="mb-4">
-                <p className="justify-between">{user.displayName}</p>
+                <p className="justify-between">
+                  {user.displayName ? user.displayName : "Your Name"}
+                </p>
               </li>
               <li>
-                <button className="btn btn-neutral">Logout</button>
+                <button onClick={handleSignOut} className="btn btn-neutral">
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
