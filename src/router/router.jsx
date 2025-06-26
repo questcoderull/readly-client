@@ -5,6 +5,7 @@ import PageNOtFound from "../Pages/ErrorPages/PageNOtFound";
 import Home from "../Pages/Home/Home";
 import Register from "../Pages/Register/Register";
 import SignIn from "../Pages/signin/SignIn";
+import AddBlog from "../Pages/AddBlog";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: "/add-blog",
+        element: <AddBlog></AddBlog>,
       },
       {
         path: "/register",
