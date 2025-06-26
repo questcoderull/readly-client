@@ -1,11 +1,13 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import resterAnimation from "../../assets/register.json";
 import Lottie from "lottie-react";
 import { AuthContext } from "../../contexts/AuthContext";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const { createUser, loading, playSoundSuccess, playSoundAlert } =
     use(AuthContext);
 
@@ -54,6 +56,7 @@ const Register = () => {
                 type="text"
                 className="input w-full"
                 placeholder="Name"
+                required
               />
 
               <label className="label">Email</label>
@@ -62,6 +65,7 @@ const Register = () => {
                 type="email"
                 className="input w-full"
                 placeholder="Email"
+                required
               />
 
               <label className="label">Photo</label>
@@ -72,14 +76,26 @@ const Register = () => {
                 placeholder="PhotoURL"
               />
 
-              {/* Password field */}
-              <label className="label">Password</label>
-              <input
-                name="password"
-                type="text"
-                className="input w-full"
-                placeholder="Password"
-              />
+              {/* Password */}
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <div className="input input-bordered flex items-center justify-between w-full px-3 py-2 gap-2">
+                <input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  required
+                  placeholder="Password"
+                  className="flex-grow bg-transparent outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="text-gray-600"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
 
               <button className="btn btn-neutral mt-4">Register Now</button>
             </form>

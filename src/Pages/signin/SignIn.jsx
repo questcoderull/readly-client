@@ -1,11 +1,13 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import loginAnimation from "../../assets/SignIn.json";
 import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignIn = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const { logInUser, loading, playSoundSuccess, playSoundAlert } =
     use(AuthContext);
 
@@ -52,16 +54,29 @@ const SignIn = () => {
                 type="email"
                 className="input w-full"
                 placeholder="Email"
+                required
               />
 
-              {/* Password field */}
-              <label className="label">Password</label>
-              <input
-                name="password"
-                type="text"
-                className="input w-full"
-                placeholder="Password"
-              />
+              {/* Password */}
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <div className="input input-bordered flex items-center justify-between w-full px-3 py-2 gap-2">
+                <input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  required
+                  placeholder="Password"
+                  className="flex-grow bg-transparent outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="text-gray-600"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
 
               <button className="btn btn-neutral mt-4">Log In Now</button>
             </form>
