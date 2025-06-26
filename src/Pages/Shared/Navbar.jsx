@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { Link, NavLink } from "react-router";
 import {
   FaHome,
@@ -10,10 +10,11 @@ import {
   FaUserPlus,
 } from "react-icons/fa";
 import logo from "../../assets/readly.png";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Navbar = () => {
-  const [user, setUser] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { user, loading } = use(AuthContext);
+
   return (
     <div className="navbar sticky top-0 z-50 py-5 bg-white/30 backdrop-blur-md  ">
       <div className="navbar-start">
@@ -231,7 +232,7 @@ const Navbar = () => {
                   }
                 /> */}
 
-                {user && user.photoURL ? (
+                {/* {user && user.photoURL ? (
                   <>
                     <img
                       data-tooltip-id="user-tooltip"
@@ -251,6 +252,32 @@ const Navbar = () => {
                   <span>
                     {user?.displayName?.charAt(0).toUpperCase() || "U"}
                   </span>
+                )} */}
+
+                {/* from gpt */}
+                {user && user.photoURL ? (
+                  <>
+                    <img
+                      data-tooltip-id="user-tooltip"
+                      data-tooltip-content={user.displayName}
+                      src={user.photoURL}
+                      alt="User profile"
+                      className="w-10 h-10 rounded-full object-cover cursor-pointer"
+                    />
+                    <Tooltip
+                      id="user-tooltip"
+                      place="bottom"
+                      variant="info"
+                      style={{ fontSize: "14px" }}
+                    />
+                  </>
+                ) : (
+                  <div
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-[#023047] text-[#FFB703] text-lg font-bold uppercase cursor-default"
+                    title={user?.displayName || "User"}
+                  >
+                    {user?.displayName?.charAt(0) || "U"}
+                  </div>
                 )}
               </div>
             </div>
