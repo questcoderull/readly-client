@@ -4,13 +4,12 @@ import { FaPaperPlane } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import subscribe from "../../assets/subscribe.json";
-import { AuthContext } from "../../contexts/AuthContext";
+
 import Swal from "sweetalert2";
+import { playSoundAlert, playSoundSuccess } from "../Shared/soundEffect";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
-
-  const { playSoundSuccess, playSoundAlert } = use(AuthContext);
 
   const handleSubscribe = (e) => {
     e.preventDefault();

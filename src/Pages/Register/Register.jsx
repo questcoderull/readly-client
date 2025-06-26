@@ -5,11 +5,12 @@ import { AuthContext } from "../../contexts/AuthContext";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import SocialLogin from "../Shared/SocialLogin";
+import { playSoundAlert, playSoundSuccess } from "../Shared/soundEffect";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createUser, loading, playSoundSuccess, playSoundAlert } =
-    use(AuthContext);
+  const { createUser, loading } = use(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -52,6 +53,7 @@ const Register = () => {
         console.log(error);
       });
   };
+
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -59,7 +61,7 @@ const Register = () => {
           <Lottie animationData={resterAnimation} loop={true}></Lottie>
         </div>
         <div className="card bg-base-100 w-full lg:w-11/12 shrink-0 shadow-lg flex-1">
-          <div className="card-body">
+          <div className="card-body py-10">
             <h1 className="text-5xl font-bold">Register now!</h1>
             <form onSubmit={handleRegister} className="fieldset">
               <label className="label">Name</label>
@@ -111,6 +113,8 @@ const Register = () => {
 
               <button className="btn btn-neutral mt-4">Register Now</button>
             </form>
+
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

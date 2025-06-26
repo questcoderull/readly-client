@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 
@@ -13,6 +15,9 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
+  const provider = new GoogleAuthProvider();
+
+  //   creating new user
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -28,6 +33,12 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  //   sighUp/signIn with google.
+  const continueWithGoogle = () => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
+
   //   ovserber
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -40,26 +51,15 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-  //   side effects
-  const playSoundSuccess = () => {
-    const audio = new Audio("/sound.wav");
-    audio.play();
-  };
-
-  const playSoundAlert = () => {
-    const audio = new Audio("/nitification.mp3");
-    audio.play();
-  };
 
   const authInfo = {
-    playSoundSuccess,
-    playSoundAlert,
     loading,
     user,
     setLoading,
     createUser,
     logInUser,
     logOutUser,
+    continueWithGoogle,
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;

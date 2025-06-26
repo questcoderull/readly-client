@@ -5,11 +5,12 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import SocialLogin from "../Shared/SocialLogin";
+import { playSoundAlert, playSoundSuccess } from "../Shared/soundEffect";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { logInUser, loading, playSoundSuccess, playSoundAlert } =
-    use(AuthContext);
+  const { logInUser, loading } = use(AuthContext);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -61,7 +62,7 @@ const SignIn = () => {
           <Lottie animationData={loginAnimation} loop={true}></Lottie>
         </div>
         <div className="card bg-base-100 w-full lg:w-11/12 shrink-0 shadow-lg flex-1">
-          <div className="card-body">
+          <div className="card-body py-10">
             <h1 className="text-5xl font-bold">Log In now!</h1>
             <form onSubmit={handleSignIn} className="fieldset">
               <label className="label">Email</label>
@@ -94,6 +95,8 @@ const SignIn = () => {
 
               <button className="btn btn-neutral mt-4">Log In Now</button>
             </form>
+
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
