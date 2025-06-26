@@ -12,7 +12,9 @@ const PageNOtFound = () => {
         <Lottie animationData={animationNOtFound} loop={true}></Lottie>
       </div>
 
-      <h1 className="text-6xl font-bold text-[#023047] mb-2">Page Not Found</h1>
+      <h1 className="text-3xl lg:text-5xl lg:font-bold text-[#023047] lg:-mt-14 z-1">
+        Page Not Found
+      </h1>
 
       <p className="text-[#023047] mb-2 max-w-md">
         Sorry, the page you’re looking for doesn’t exist or may have been moved.
