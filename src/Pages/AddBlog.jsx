@@ -67,6 +67,10 @@ const AddBlog = () => {
               <option>Travel</option>
               <option>Finance</option>
               <option>Education</option>
+              <option>Marketing</option>
+              <option>Health</option>
+              <option>Productivity</option>
+              <option>Career</option>
               <option>Others</option>
             </select>
           </div>
