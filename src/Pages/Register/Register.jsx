@@ -32,8 +32,20 @@ const Register = () => {
       })
       .catch((error) => {
         playSoundAlert();
+        let message = "";
+
+        if (error.code === "auth/email-already-in-use") {
+          message = "This email is already registered.";
+        } else if (error.code === "auth/invalid-email") {
+          message = "Please enter a valid email address.";
+        } else if (error.code === "auth/weak-password") {
+          message = "Password should be at least 6 characters and stronger.";
+        } else {
+          message = "Something went wrong. Please try again.";
+        }
+
         Swal.fire({
-          title: `${error.code}`,
+          title: message,
           icon: "error",
           draggable: true,
         });

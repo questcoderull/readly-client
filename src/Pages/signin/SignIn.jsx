@@ -30,12 +30,28 @@ const SignIn = () => {
       })
       .catch((error) => {
         playSoundAlert();
+        let message = "";
+
+        if (error.code === "auth/user-not-found") {
+          message = "No user found with this email. Please register first.";
+        } else if (error.code === "auth/wrong-password") {
+          message = "Incorrect password. Please try again.";
+        } else if (error.code === "auth/invalid-email") {
+          message = "Please enter a valid email address.";
+        } else if (error.code === "auth/too-many-requests") {
+          message =
+            "Too many unsuccessful login attempts. Please try again later.";
+        } else {
+          message = "Something went wrong. Please try again.";
+        }
+
         Swal.fire({
-          title: `${error.code}`,
+          title: message,
           icon: "error",
           draggable: true,
         });
-        console.log(error);
+        console.log(error.message);
+        console.log(error.code);
       });
   };
   return (
@@ -54,7 +70,6 @@ const SignIn = () => {
                 type="email"
                 className="input w-full"
                 placeholder="Email"
-                required
               />
 
               {/* Password */}
@@ -65,7 +80,6 @@ const SignIn = () => {
                 <input
                   name="password"
                   type={showPassword ? "text" : "password"}
-                  required
                   placeholder="Password"
                   className="flex-grow bg-transparent outline-none"
                 />
