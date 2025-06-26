@@ -6,6 +6,7 @@ import Home from "../Pages/Home/Home";
 import Register from "../Pages/Register/Register";
 import SignIn from "../Pages/signin/SignIn";
 import AddBlog from "../Pages/AddBlog";
+import AllBlogs from "../Pages/AllBlogs/AllBlogs";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
       {
         path: "/add-blog",
         element: <AddBlog></AddBlog>,
+      },
+      {
+        path: "/all-blogs",
+        loader: () => fetch("http://localhost:3000/blogs"),
+        Component: AllBlogs,
       },
       {
         path: "/register",
