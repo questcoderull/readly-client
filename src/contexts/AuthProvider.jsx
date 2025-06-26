@@ -11,7 +11,18 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  const playSoundSuccess = () => {
+    const audio = new Audio("/sound.wav");
+    audio.play();
+  };
+
+  const playSoundAlert = () => {
+    const audio = new Audio("/alert.wav");
+    audio.play();
+  };
   const authInfo = {
+    playSoundSuccess,
+    playSoundAlert,
     loading,
     setLoading,
     createUser,

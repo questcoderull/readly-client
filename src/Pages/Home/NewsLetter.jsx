@@ -1,22 +1,16 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import toast from "react-hot-toast";
 import { FaPaperPlane } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import subscribe from "../../assets/subscribe.json";
+import { AuthContext } from "../../contexts/AuthContext";
+import Swal from "sweetalert2";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
 
-  const playSoundSuccess = () => {
-    const audio = new Audio("/sound.wav");
-    audio.play();
-  };
-
-  const playSoundAlert = () => {
-    const audio = new Audio("/alert.wav");
-    audio.play();
-  };
+  const { playSoundSuccess, playSoundAlert } = use(AuthContext);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -25,7 +19,12 @@ const Newsletter = () => {
       return toast.error("Please enter your email.");
     }
     playSoundSuccess();
-    toast.success("Thank you for subscribing to our newsletter!");
+    // toast.success("Thank you for subscribing to our newsletter!");
+    Swal.fire({
+      title: "Thank you for subscribing to our newsletter!",
+      icon: "success",
+      draggable: true,
+    });
     setEmail("");
   };
 

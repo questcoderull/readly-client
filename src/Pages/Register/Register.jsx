@@ -2,9 +2,12 @@ import React, { use } from "react";
 import resterAnimation from "../../assets/register.json";
 import Lottie from "lottie-react";
 import { AuthContext } from "../../contexts/AuthContext";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser, loading } = use(AuthContext);
+  const { createUser, loading, playSoundSuccess, playSoundAlert } =
+    use(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -21,9 +24,17 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
+        playSoundSuccess();
+        toast.success("Registerd successfully");
         console.log(result);
       })
       .catch((error) => {
+        playSoundAlert();
+        Swal.fire({
+          title: `${error.code}`,
+          icon: "error",
+          draggable: true,
+        });
         console.log(error);
       });
   };
