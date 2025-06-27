@@ -2,8 +2,7 @@ import React from "react";
 import { Outlet, useNavigation } from "react-router";
 import Navbar from "../Pages/Shared/Navbar";
 import Footer from "../Pages/Shared/Footer";
-import Loading from "../Pages/Shared/Loading";
-import Skeleton from "react-loading-skeleton";
+
 import "react-loading-skeleton/dist/skeleton.css";
 import BlogCardSkeleton from "../Pages/Shared/BlogCardSkeleton";
 

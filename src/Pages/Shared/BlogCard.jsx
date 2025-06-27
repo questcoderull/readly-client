@@ -82,12 +82,6 @@ const BlogCard = ({ blog }) => {
 
       {/* Blog Info */}
       <div className="w-full space-y-3">
-        {/* Like Count */}
-        <div className="flex justify-end items-center gap-1 text-rose-500 text-sm font-medium">
-          <FaHeart className="text-base" />
-          <span>0</span>
-        </div>
-
         {/* Title */}
         <h2 className="text-2xl font-semibold text-[#1D3557]">{title}</h2>
 
