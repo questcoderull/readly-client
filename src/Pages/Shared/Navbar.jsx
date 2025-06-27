@@ -14,10 +14,10 @@ import { AuthContext } from "../../contexts/AuthContext";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
+import { playSoundAlert, playSoundSuccess } from "./soundEffect";
 
 const Navbar = () => {
-  const { user, loading, logOutUser, playSoundSuccess, playSoundAlert } =
-    use(AuthContext);
+  const { user, loading, logOutUser } = use(AuthContext);
 
   const handleSignOut = () => {
     Swal.fire({

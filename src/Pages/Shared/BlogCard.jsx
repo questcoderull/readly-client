@@ -27,7 +27,7 @@ const categoryColors = {
 };
 
 const BlogCard = ({ blog }) => {
-  const { title, photo, descriptionLong, category } = blog;
+  const { _id, title, photo, descriptionLong, category } = blog;
 
   const badgeColor = categoryColors[category] || "#6B7280";
   return (
@@ -100,7 +100,10 @@ const BlogCard = ({ blog }) => {
 
         {/* Footer */}
         <div className="flex justify-between items-center pt-3 text-sm">
-          <Link className="flex items-center gap-1 text-[#457B9D] hover:text-[#1D3557] transition">
+          <Link
+            to={`/blog-details/${_id}`}
+            className="flex items-center gap-1 text-[#457B9D] hover:text-[#1D3557] transition"
+          >
             View details <FaArrowRight />
           </Link>
 
