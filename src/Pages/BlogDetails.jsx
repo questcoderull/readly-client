@@ -133,8 +133,8 @@ const BlogDetails = () => {
           <span className="block md:hidden">Home</span>
         </Link>
         <Link to="/all-blogs" className="btn bg-[#FB8500] text-white">
-          <span className="hidden md:block">Browse Listings</span>
-          <span className="block md:hidden">Browse</span>
+          <span className="hidden md:block">All Blogs</span>
+          <span className="block md:hidden">Blogs</span>
         </Link>
       </div>
     </div>

@@ -9,6 +9,7 @@ import AddBlog from "../Pages/AddBlog";
 import AllBlogs from "../Pages/AllBlogs/AllBlogs";
 import BlogDetails from "../Pages/BlogDetails";
 import PrivateRoute from "../contexts/PrivabeteRoute";
+import FeaturedBlogs from "../Pages/FeaturedBlogs";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
         path: "/all-blogs",
         loader: () => fetch("http://localhost:3000/blogs"),
         Component: AllBlogs,
+      },
+      {
+        path: "/featured-blogs",
+        loader: () => fetch("http://localhost:3000/blogs"),
+        element: <FeaturedBlogs></FeaturedBlogs>,
       },
       {
         path: "/blog-details/:id",

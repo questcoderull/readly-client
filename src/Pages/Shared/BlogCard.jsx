@@ -1,5 +1,5 @@
-import React from "react";
-import { FaArrowRight, FaHeart } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaArrowRight, FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router";
 
 // const categoryColors = {
@@ -27,9 +27,15 @@ const categoryColors = {
 };
 
 const BlogCard = ({ blog }) => {
+  const [isClicked, setIsClicked] = useState(false);
   const { _id, title, photo, descriptionLong, category } = blog;
 
   const badgeColor = categoryColors[category] || "#6B7280";
+
+  const hadleWishLished = () => {
+    setIsClicked(true);
+  };
+
   return (
     //     <div
     //       className="flex flex-col sm:flex-row items-center p-4 bg-white border border-blue-400 rounded-xl shadow-md hover:shadow-lg gap-5 transition-transform duration-300  hover:scale-[1.01]
@@ -81,7 +87,19 @@ const BlogCard = ({ blog }) => {
       />
 
       {/* Blog Info */}
-      <div className="w-full space-y-3">
+      <div className="w-full space-y-3 cursor-pointer">
+        {/* Like Count */}
+        <div className="flex justify-end items-center gap-1 text-rose-500 text-sm font-medium">
+          <span>{isClicked ? "Added to wishlist" : "Add To Wishlist"}</span>
+          <button onClick={hadleWishLished} className="cursor-pointer">
+            {isClicked ? (
+              <FaHeart className="text-red-500 text-xl transition-all duration-300" />
+            ) : (
+              <FaRegHeart className="text-red-500 text-xl transition-all duration-300" />
+            )}
+          </button>
+        </div>
+
         {/* Title */}
         <h2 className="text-2xl font-semibold text-[#1D3557]">{title}</h2>
 
