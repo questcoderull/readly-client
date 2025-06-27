@@ -1,18 +1,7 @@
 import React, { use } from "react";
 import { useLoaderData, Link } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
-
-const categoryColors = {
-  Technology: "#F43F5E",
-  Travel: "#3B82F6",
-  Finance: "#22C55E",
-  Education: "#A855F7",
-  Marketing: "#EAB308",
-  Health: "#EF4444",
-  Productivity: "#14B8A6",
-  Career: "#8B5CF6",
-  Others: "#64748B",
-};
+import { categoryColors } from "./Shared/colors";
 
 const BlogDetails = () => {
   const { user } = use(AuthContext);

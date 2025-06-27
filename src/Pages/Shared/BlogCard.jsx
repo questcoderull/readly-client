@@ -1,30 +1,9 @@
 import React, { useState } from "react";
 import { FaArrowRight, FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router";
-
-// const categoryColors = {
-//   Technology: "#3B82F6",
-//   Travel: "#FB923C",
-//   Finance: "#22C55E",
-//   Education: "#A855F7",
-//   Marketing: "#F59E0B",
-//   Health: "#EF4444",
-//   Productivity: "#14B8A6",
-//   Career: "#8B5CF6",
-//   Others: "#64748B",
-// };
-
-const categoryColors = {
-  Technology: "#F43F5E",
-  Travel: "#3B82F6",
-  Finance: "#22C55E",
-  Education: "#A855F7",
-  Marketing: "#EAB308",
-  Health: "#EF4444",
-  Productivity: "#14B8A6",
-  Career: "#8B5CF6",
-  Others: "#64748B",
-};
+import { playSoundAlert, playSoundSuccess } from "./soundEffect";
+import toast from "react-hot-toast";
+import { categoryColors } from "./colors";
 
 const BlogCard = ({ blog }) => {
   const [isClicked, setIsClicked] = useState(false);
@@ -33,7 +12,30 @@ const BlogCard = ({ blog }) => {
   const badgeColor = categoryColors[category] || "#6B7280";
 
   const hadleWishLished = () => {
+    if (isClicked) {
+      if (isClicked) {
+        playSoundAlert();
+        toast.error(
+          <span>
+            <span style={{ color: badgeColor }}>{title}</span> is already added
+          </span>,
+          {
+            duration: 6000,
+          }
+        );
+        return;
+      }
+    }
+    playSoundSuccess();
     setIsClicked(true);
+    toast.success(
+      <span>
+        <span style={{ color: badgeColor }}>{title}</span> added to wishlist
+      </span>,
+      {
+        duration: 6000,
+      }
+    );
   };
 
   return (
