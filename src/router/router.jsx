@@ -10,7 +10,7 @@ import AllBlogs from "../Pages/AllBlogs/AllBlogs";
 import BlogDetails from "../Pages/BlogDetails";
 import PrivateRoute from "../contexts/PrivabeteRoute";
 import FeaturedBlogs from "../Pages/FeaturedBlogs";
-import WishlistPage from "../Pages/WishListPage";
+import WishlistPage from "../Pages/Wishlist/WishListPage";
 
 const router = createBrowserRouter([
   {
