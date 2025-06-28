@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { FaArrowRight, FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router";
 import { playSoundAlert, playSoundSuccess } from "./soundEffect";
@@ -10,11 +10,21 @@ import { AuthContext } from "../../contexts/AuthContext";
 const BlogCard = ({ blog }) => {
   const { user } = use(AuthContext);
   const [isClicked, setIsClicked] = useState(false);
+
   const { _id, title, photo, descriptionLong, category, authorName } = blog;
 
   const badgeColor = categoryColors[category] || "#6B7280";
 
   const hadleWishLished = () => {
+    if (!user) {
+      playSoundAlert();
+      toast.error("you cann't add it wihout logged in", {
+        duration: 6000,
+      });
+
+      return;
+    }
+
     if (isClicked) {
       if (isClicked) {
         playSoundAlert();
@@ -57,59 +67,22 @@ const BlogCard = ({ blog }) => {
       .catch((error) => {
         console.log(error);
         playSoundAlert();
-        toast.error(
-          <span>
-            Sorry couldn't add{" "}
-            <span style={{ color: badgeColor }}>{title}</span> to wishlist
-          </span>,
-          {
-            duration: 6000,
-          }
-        );
+        if (error.response?.status === 409) {
+          setIsClicked(true);
+          toast.error(
+            <span>
+              <span style={{ color: badgeColor }}>{title}</span> is already
+              added
+            </span>,
+            {
+              duration: 6000,
+            }
+          );
+        }
       });
   };
 
   return (
-    //     <div
-    //       className="flex flex-col sm:flex-row items-center p-4 bg-white border border-blue-400 rounded-xl shadow-md hover:shadow-lg gap-5 transition-transform duration-300  hover:scale-[1.01]
-    // "
-    //     >
-    //       {/* Room Image */}
-    //       <img
-    //         className="w-full sm:w-[200px] h-[220px] rounded-xl object-cover"
-    //         src={photo}
-    //         alt="Room"
-    //       />
-
-    //       {/* Room Info */}
-    //       <div className="w-full space-y-2">
-    //         {/* Like Count */}
-    //         <div className="flex justify-end items-center gap-1 text-pink-500 text-sm font-semibold">
-    //           <FaHeart className="text-lg" />
-    //           <span>0</span>
-    //         </div>
-
-    //         {/* Title */}
-    //         <h2 className="text-xl font-bold text-[#023047]">{title}</h2>
-
-    //         {/* Description */}
-    //         <p className="text-gray-600 text-sm">
-    //           {descriptionLong.length > 100
-    //             ? descriptionLong.slice(0, 100) + "..."
-    //             : descriptionLong}
-    //         </p>
-
-    //         {/* Footer Section */}
-    //         <div className="flex justify-between items-center mt-4 text-sm">
-    //           <Link className="flex items-center gap-1 text-[#FB8500] hover:text-[#023047] transition">
-    //             View details <FaArrowRight />
-    //           </Link>
-
-    //           <span className="badge bg-[#FB8500] text-white">{category}</span>
-    //         </div>
-    //       </div>
-    //     </div>
-
     // polished
     <div className="flex flex-col sm:flex-row items-center p-4 bg-white border border-gray-200 rounded-2xl shadow hover:shadow-lg gap-5 transition-transform duration-300 hover:scale-[1.01]">
       {/* Blog Image */}
@@ -123,7 +96,7 @@ const BlogCard = ({ blog }) => {
       <div className="w-full space-y-3 cursor-pointer">
         {/* Like Count */}
         <div className="flex justify-end items-center gap-1 text-rose-500 text-sm font-medium">
-          <span>{isClicked ? "Added to wishlist" : "Add To Wishlist"}</span>
+          <span>{isClicked ? "Added" : "Add To Wishlist"}</span>
           <button onClick={hadleWishLished} className="cursor-pointer">
             {isClicked ? (
               <FaHeart className="text-red-500 text-xl transition-all duration-300" />

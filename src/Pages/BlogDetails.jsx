@@ -129,8 +129,11 @@ const BlogDetails = () => {
           </p>
 
           {/* update button */}
-
-          {authorEmail === user?.email && <Link className="btn">Update</Link>}
+          <div className="text-end">
+            {authorEmail === user?.email && (
+              <Link className="btn bg-[#1D3557] text-white  mt-3">Update</Link>
+            )}
+          </div>
         </div>
       </div>
 
