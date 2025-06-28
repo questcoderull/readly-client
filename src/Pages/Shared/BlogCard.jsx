@@ -15,6 +15,25 @@ const BlogCard = ({ blog }) => {
 
   const badgeColor = categoryColors[category] || "#6B7280";
 
+  useEffect(() => {
+    if (!user?.email) return;
+
+    axios
+      .get(`http://localhost:3000/wishlist?email=${user.email}`)
+      .then((res) => {
+        const wishedBlogs = res.data;
+        const alreadyWished = wishedBlogs.some(
+          (item) => item.blogId === blog._id
+        );
+        if (alreadyWished) {
+          setIsClicked(true);
+        }
+      })
+      .catch((err) => {
+        console.log("Error checking wishlist:", err);
+      });
+  }, [user?.email, blog._id]);
+
   const hadleWishLished = () => {
     if (!user) {
       playSoundAlert();
