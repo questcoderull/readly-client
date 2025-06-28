@@ -7,6 +7,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "../Shared/SocialLogin";
 import { playSoundAlert, playSoundSuccess } from "../Shared/soundEffect";
+import { Link } from "react-router";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -97,6 +98,13 @@ const SignIn = () => {
             </form>
 
             <SocialLogin></SocialLogin>
+
+            <p className="mt-3">
+              Don't have an account?{" "}
+              <Link className="text-blue-900 underline" to="/register">
+                Register
+              </Link>
+            </p>
           </div>
         </div>
       </div>

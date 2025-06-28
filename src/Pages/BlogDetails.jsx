@@ -2,10 +2,12 @@ import React, { use } from "react";
 import { useLoaderData, Link } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import { categoryColors } from "./Shared/colors";
+import axios from "axios";
 
 const BlogDetails = () => {
   const { user } = use(AuthContext);
   const {
+    _id,
     title,
     photo,
     category,
@@ -16,6 +18,34 @@ const BlogDetails = () => {
   } = useLoaderData();
 
   const badgeColor = categoryColors[category] || "#6B7280";
+
+  const handleAddComment = (e) => {
+    e.preventDefault();
+    const blogId = _id;
+    const userName = user.displayName;
+    const userPhoto = user.photoURL;
+    const comment = e.target.comment.value;
+
+    const commentInfo = {
+      blogId,
+      userName,
+      userPhoto,
+      comment,
+      createdAt: new Date(),
+    };
+
+    // console.log(commentInfo);
+
+    axios
+      .post("http://localhost:3000/comments", commentInfo)
+      .then((res) => {
+        console.log(res.data);
+        e.target.reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="bg-blue-50 py-10 px-4 my-10 rounded-xl">
@@ -68,11 +98,12 @@ const BlogDetails = () => {
 
         {/* Comment Form */}
         {user ? (
-          <form className="space-y-2">
+          <form onSubmit={handleAddComment} className="space-y-2">
             <textarea
               placeholder="Write your comment..."
               className="w-full border border-gray-300 rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
               rows={3}
+              name="comment"
               required
             />
             <button

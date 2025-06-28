@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "../Shared/SocialLogin";
 import { playSoundAlert, playSoundSuccess } from "../Shared/soundEffect";
+import { Link } from "react-router";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -115,6 +116,13 @@ const Register = () => {
             </form>
 
             <SocialLogin></SocialLogin>
+
+            <p className="mt-3">
+              Already have an account?{" "}
+              <Link className="text-blue-900 underline" to="/logIn">
+                LogIn
+              </Link>
+            </p>
           </div>
         </div>
       </div>
