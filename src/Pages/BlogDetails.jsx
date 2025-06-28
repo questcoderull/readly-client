@@ -64,7 +64,7 @@ const BlogDetails = () => {
       .catch((error) => {
         playSoundAlert();
         Swal.fire({
-          title: "OOps! couldn't your comment, smoehtis went wrong!",
+          title: "OOps! couldn't your comment, smoehtig went wrong!",
           icon: "error",
           draggable: true,
         });
