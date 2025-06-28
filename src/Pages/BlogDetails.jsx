@@ -1,8 +1,11 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useLoaderData, Link } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 import { categoryColors } from "./Shared/colors";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { playSoundAlert, playSoundSuccess } from "./Shared/soundEffect";
+import Swal from "sweetalert2";
 
 const BlogDetails = () => {
   const { user } = use(AuthContext);
@@ -17,6 +20,8 @@ const BlogDetails = () => {
     authorEmail,
   } = useLoaderData();
 
+  const [comment, setComment] = useState([]);
+
   const badgeColor = categoryColors[category] || "#6B7280";
 
   const handleAddComment = (e) => {
@@ -25,6 +30,15 @@ const BlogDetails = () => {
     const userName = user.displayName;
     const userPhoto = user.photoURL;
     const comment = e.target.comment.value;
+
+    if (authorEmail === user?.email) {
+      playSoundAlert();
+      return Swal.fire({
+        title: "You can't comment on your own blog",
+        icon: "error",
+        draggable: true,
+      });
+    }
 
     const commentInfo = {
       blogId,
@@ -39,13 +53,37 @@ const BlogDetails = () => {
     axios
       .post("http://localhost:3000/comments", commentInfo)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         e.target.reset();
+        setComment((prev) => [...prev, commentInfo]);
+        playSoundSuccess();
+        toast.success("Your Comment added", {
+          duration: 4000,
+        });
       })
       .catch((error) => {
-        console.log(error);
+        playSoundAlert();
+        Swal.fire({
+          title: "OOps! couldn't your comment, smoehtis went wrong!",
+          icon: "error",
+          draggable: true,
+        });
+        // console.log(error);
       });
   };
+
+  useEffect(() => {
+    fetch("http://localhost:3000/comments")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        const filteredComment = data.filter(
+          (comment) => comment.blogId === _id
+        );
+
+        setComment(filteredComment);
+      });
+  }, [_id]);
 
   return (
     <div className="bg-blue-50 py-10 px-4 my-10 rounded-xl">
@@ -121,28 +159,28 @@ const BlogDetails = () => {
 
         {/* Comment List */}
         <div className="space-y-3 pt-2">
-          <div className="bg-blue-50 p-3 rounded-md border border-blue-100">
-            <p className="text-sm font-semibold text-[#1D3557]">
-              John Doe{" "}
-              <span className="text-xs text-gray-500">
-                (June 27, 2025 - 9:30 AM)
-              </span>
-            </p>
-            <p className="text-sm text-gray-700 mt-1">
-              This blog is really informative and helpful!
-            </p>
-          </div>
-          <div className="bg-blue-50 p-3 rounded-md border border-blue-100">
-            <p className="text-sm font-semibold text-[#1D3557]">
-              Sarah Ali{" "}
-              <span className="text-xs text-gray-500">
-                (June 26, 2025 - 5:12 PM)
-              </span>
-            </p>
-            <p className="text-sm text-gray-700 mt-1">
-              Thank you for sharing this topic. Loved it!
-            </p>
-          </div>
+          {comment.map((com) => (
+            <div
+              key={com._id}
+              com={com}
+              className="bg-blue-50 p-3 flex gap-2 rounded-md border border-blue-100"
+            >
+              <div className="avatar">
+                <div className="w-10 h-10 rounded-full">
+                  <img src={com.userPhoto} />
+                </div>
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-[#1D3557]">
+                  {com.userName}
+                  <span className="text-xs ml-2 text-gray-500">
+                    {new Date(com.createdAt).toLocaleString()}
+                  </span>
+                </p>
+                <p className="text-sm text-gray-700 mt-1">{com.comment}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
