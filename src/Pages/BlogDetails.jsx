@@ -127,6 +127,10 @@ const BlogDetails = () => {
           <p className="text-gray-700 text-sm leading-relaxed">
             {descriptionLong}
           </p>
+
+          {/* update button */}
+
+          {authorEmail === user?.email && <Link className="btn">Update</Link>}
         </div>
       </div>
 
