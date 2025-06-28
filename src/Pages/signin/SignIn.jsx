@@ -7,11 +7,13 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "../Shared/SocialLogin";
 import { playSoundAlert, playSoundSuccess } from "../Shared/soundEffect";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { logInUser, loading } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -29,6 +31,7 @@ const SignIn = () => {
         playSoundSuccess();
         toast.success("LoggedIn successfully");
         console.log(result);
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         playSoundAlert();

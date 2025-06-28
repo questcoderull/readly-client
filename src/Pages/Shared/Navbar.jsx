@@ -255,7 +255,7 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-10 rounded-full">
+              <div className="w-24 rounded-full">
                 {/* <img
                   alt="UserImage"
                   src={
@@ -293,8 +293,9 @@ const Navbar = () => {
                       data-tooltip-content={user.displayName}
                       src={user.photoURL}
                       alt="User profile"
-                      className="w-10 h-10 rounded-full object-cover cursor-pointer"
+                      className="w-20 h-20 rounded-full object-cover cursor-pointer"
                     />
+
                     <Tooltip
                       id="user-tooltip"
                       place="bottom"
@@ -332,14 +333,28 @@ const Navbar = () => {
           <div className="flex items-center">
             <NavLink
               to="/login"
-              className="btn border hidden border-[#219EBC] text-[#023047] bg-white hover:bg-[#023047] hover:text-white rounded-md transition md:flex items-center gap-2"
+              className={({ isActive }) =>
+                `btn border hidden  rounded-md transition md:flex items-center gap-2 ${
+                  isActive
+                    ? "bg-[#023047] text-white"
+                    : "border-[#219EBC] text-[#023047] bg-white hover:bg-[#023047] hover:text-white"
+                }`
+              }
+              // className="btn border hidden border-[#219EBC] text-[#023047] bg-white hover:bg-[#023047] hover:text-white rounded-md transition md:flex items-center gap-2"
             >
               <FaSignInAlt /> LogIn
             </NavLink>
 
             <NavLink
               to="/register"
-              className="btn border border-[#FB8500] bg-[#FB8500] text-white hover:bg-[#023047] hover:text-white ml-3 inline-flex items-center gap-2 md:px-4 px-2 py-1 text-sm"
+              className={({ isActive }) =>
+                `btn border  ml-3 inline-flex items-center gap-2 md:px-4 px-2 py-1 text-sm ${
+                  isActive
+                    ? "bg-[#023047] text-white"
+                    : "border-[#FB8500] bg-[#FB8500] text-white hover:bg-[#023047] hover:text-white"
+                }`
+              }
+              // className="btn border border-[#FB8500] bg-[#FB8500] text-white hover:bg-[#023047] hover:text-white ml-3 inline-flex items-center gap-2 md:px-4 px-2 py-1 text-sm"
             >
               <FaUserPlus />
               <span className="hidden md:inline">SignUp</span>

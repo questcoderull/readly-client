@@ -7,11 +7,15 @@ import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "../Shared/SocialLogin";
 import { playSoundAlert, playSoundSuccess } from "../Shared/soundEffect";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { createUser, loading } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -28,9 +32,28 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
-        playSoundSuccess();
-        toast.success("Registerd successfully");
-        console.log(result);
+        const createdUser = result.user;
+
+        updateProfile(createdUser, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            playSoundSuccess();
+            toast.success("Registerd successfully");
+            console.log(result);
+            navigate(`${location.state ? location.state : "/"}`);
+          })
+          .catch((error) => {
+            playSoundAlert();
+
+            Swal.fire({
+              title: "Oops! something went wrong",
+              icon: "error",
+              draggable: true,
+            });
+            console.log(error);
+          });
       })
       .catch((error) => {
         playSoundAlert();

@@ -3,9 +3,12 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { playSoundAlert, playSoundSuccess } from "./soundEffect";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router";
 
 const SocialLogin = () => {
   const { continueWithGoogle } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSignUpwithGoogle = () => {
     continueWithGoogle()
@@ -13,6 +16,7 @@ const SocialLogin = () => {
         playSoundSuccess();
         toast.success("Registerd successfully");
         console.log(result);
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         playSoundAlert();
