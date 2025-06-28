@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData, Link } from "react-router";
+import { Link } from "react-router";
 import { categoryColors } from "./Shared/colors";
 import { Fade } from "react-awesome-reveal";
 import FeaturedTableSkeleton from "./Shared/FeaturedTableSkeleton";

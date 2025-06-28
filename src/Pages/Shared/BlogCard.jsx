@@ -7,7 +7,7 @@ import { categoryColors } from "./colors";
 import axios from "axios";
 import { AuthContext } from "../../contexts/AuthContext";
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, wishlist }) => {
   const { user } = use(AuthContext);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -15,24 +15,34 @@ const BlogCard = ({ blog }) => {
 
   const badgeColor = categoryColors[category] || "#6B7280";
 
-  useEffect(() => {
-    if (!user?.email) return;
+  // useEffect(() => {
+  //   if (!user?.email) return;
 
-    axios
-      .get(`http://localhost:3000/wishlist?email=${user.email}`)
-      .then((res) => {
-        const wishedBlogs = res.data;
-        const alreadyWished = wishedBlogs.some(
-          (item) => item.blogId === blog._id
-        );
-        if (alreadyWished) {
-          setIsClicked(true);
-        }
-      })
-      .catch((err) => {
-        console.log("Error checking wishlist:", err);
-      });
-  }, [user?.email, blog._id]);
+  //   axios
+  //     .get(`http://localhost:3000/wishlist?email=${user.email}`)
+  //     .then((res) => {
+  //       const wishedBlogs = res.data;
+  //       const alreadyWished = wishedBlogs.some(
+  //         (item) => item.blogId === blog._id
+  //       );
+  //       if (alreadyWished) {
+  //         setIsClicked(true);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log("Error checking wishlist:", err);
+  //     });
+  // }, [user?.email, blog._id]);
+
+  useEffect(() => {
+    if (!user?.email || !wishlist) return;
+
+    const alreadyWished = wishlist.some((item) => item.blogId === _id);
+
+    if (alreadyWished) {
+      setIsClicked(true);
+    }
+  }, [user?.email, wishlist, _id]);
 
   const hadleWishLished = () => {
     if (!user) {
