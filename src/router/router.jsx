@@ -10,6 +10,7 @@ import AllBlogs from "../Pages/AllBlogs/AllBlogs";
 import BlogDetails from "../Pages/BlogDetails";
 import PrivateRoute from "../contexts/PrivabeteRoute";
 import FeaturedBlogs from "../Pages/FeaturedBlogs";
+import WishlistPage from "../Pages/WishListPage";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/featured-blogs",
-        loader: () => fetch("http://localhost:3000/blogs"),
         element: <FeaturedBlogs></FeaturedBlogs>,
       },
       {
@@ -46,6 +46,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <BlogDetails></BlogDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/wishlist-page",
+        element: (
+          <PrivateRoute>
+            <WishlistPage></WishlistPage>
           </PrivateRoute>
         ),
       },

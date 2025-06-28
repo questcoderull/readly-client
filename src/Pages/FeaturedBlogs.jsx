@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData, Link } from "react-router";
 import { categoryColors } from "./Shared/colors";
 import { Fade } from "react-awesome-reveal";
+import FeaturedTableSkeleton from "./Shared/FeaturedTableSkeleton";
 
 const FeaturedBlogs = () => {
-  const data = useLoaderData();
+  // const data = useLoaderData();
+  // const topTen = data
+  //   .sort((a, b) => b.descriptionLong.length - a.descriptionLong.length)
+  //   .slice(0, 10);
+  const [featuredBlog, setFeaturedBlog] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const topTen = data
-    .sort((a, b) => b.descriptionLong.length - a.descriptionLong.length)
-    .slice(0, 10);
+  useEffect(() => {
+    fetch("http://localhost:3000/blogs")
+      .then((res) => res.json())
+      .then((data) => {
+        const topTen = data
+          .sort((a, b) => b.descriptionLong.length - a.descriptionLong.length)
+          .slice(0, 10);
+        setFeaturedBlog(topTen);
+        setLoading(false);
+      });
+  }, []);
 
+  if (loading) {
+    return <FeaturedTableSkeleton></FeaturedTableSkeleton>;
+  }
   return (
     <div className="min-h-screen bg-blue-50 py-20 px-6 ">
       <h1 className="text-4xl font-extrabold text-center mb-12 text-[#023047] tracking-wide">
@@ -25,7 +42,7 @@ const FeaturedBlogs = () => {
         </div>
 
         {/* Rows */}
-        {topTen.map((blog) => {
+        {featuredBlog.map((blog) => {
           const categoryColor = categoryColors[blog.category] || "#6B7280";
 
           return (

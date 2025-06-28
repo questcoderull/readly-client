@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaArrowRight, FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router";
 import { playSoundAlert, playSoundSuccess } from "./soundEffect";
 import toast from "react-hot-toast";
 import { categoryColors } from "./colors";
+import axios from "axios";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const BlogCard = ({ blog }) => {
+  const { user } = use(AuthContext);
   const [isClicked, setIsClicked] = useState(false);
-  const { _id, title, photo, descriptionLong, category } = blog;
+  const { _id, title, photo, descriptionLong, category, authorName } = blog;
 
   const badgeColor = categoryColors[category] || "#6B7280";
 
@@ -26,16 +29,44 @@ const BlogCard = ({ blog }) => {
         return;
       }
     }
-    playSoundSuccess();
-    setIsClicked(true);
-    toast.success(
-      <span>
-        <span style={{ color: badgeColor }}>{title}</span> added to wishlist
-      </span>,
-      {
-        duration: 6000,
-      }
-    );
+
+    const wishedBlog = {
+      blogId: _id,
+      title,
+      category,
+      authorName,
+      email: user?.email,
+    };
+
+    // sending to databse
+    axios
+      .post("http://localhost:3000/wishlist", wishedBlog)
+      .then((res) => {
+        console.log(res.data);
+        playSoundSuccess();
+        setIsClicked(true);
+        toast.success(
+          <span>
+            <span style={{ color: badgeColor }}>{title}</span> added to wishlist
+          </span>,
+          {
+            duration: 6000,
+          }
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+        playSoundAlert();
+        toast.error(
+          <span>
+            Sorry couldn't add{" "}
+            <span style={{ color: badgeColor }}>{title}</span> to wishlist
+          </span>,
+          {
+            duration: 6000,
+          }
+        );
+      });
   };
 
   return (
