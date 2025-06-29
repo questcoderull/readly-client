@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import commentAnimation from "../../assets/discussion.json";
 import Lottie from "lottie-react";
+import { motion } from "framer-motion";
+import { categoryColors } from "../Shared/colors";
 
 const MostDiscussedBlog = ({ blogs }) => {
-  // 1. Load all blogs and all comments
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -13,16 +14,14 @@ const MostDiscussedBlog = ({ blogs }) => {
       .then((data) => setComments(data));
   }, []);
 
-  // 2. Count comments for each blog
   const blogsWithCommentCount = blogs.map((blog) => {
     const count = comments.filter((c) => c.blogId === blog._id).length;
     return { ...blog, commentCount: count };
   });
 
-  // 3. Sort by comment count and take top 5
   const topDiscussed = blogsWithCommentCount
     .sort((a, b) => b.commentCount - a.commentCount)
-    .slice(0, 5);
+    .slice(0, 6);
 
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-12">
@@ -30,7 +29,7 @@ const MostDiscussedBlog = ({ blogs }) => {
         💬 Most Discussed Blogs
       </h2>
 
-      {/* Animation - Always on Top and Centered */}
+      {/* Animation Top */}
       <div className="flex justify-center mb-10">
         <Lottie
           animationData={commentAnimation}
@@ -39,33 +38,40 @@ const MostDiscussedBlog = ({ blogs }) => {
         />
       </div>
 
-      {/* Blog Cards */}
+      {/* Animated Blog Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {topDiscussed.map((blog) => (
-          <div
-            key={blog._id}
-            className="p-6 bg-white rounded-xl border border-gray-200 shadow hover:shadow-md transition-all"
-          >
-            <h3 className="text-xl font-semibold text-[#1D3557] mb-1">
-              {blog.title}
-            </h3>
-            <p className="text-sm text-gray-600 mb-2">
-              Category:{" "}
-              <span className="font-medium text-[#FB8500]">
-                {blog.category}
-              </span>
-            </p>
-            <p className="text-sm text-gray-500 mb-3">
-              💬 {blog.commentCount} comments
-            </p>
-            <Link
-              to={`/blog-details/${blog._id}`}
-              className="inline-block text-sm font-medium text-white bg-[#023047] px-4 py-1.5 rounded-full hover:bg-[#035070] transition"
+        {topDiscussed.map((blog, index) => {
+          const categoryColor = categoryColors[blog.category] || "#6B7280";
+          return (
+            <motion.div
+              key={blog._id}
+              initial={{ x: index % 2 === 0 ? -100 : 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ type: "tween", duration: 0.7 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="p-6 bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              View Details
-            </Link>
-          </div>
-        ))}
+              <h3 className="text-xl font-semibold text-[#1D3557] mb-1">
+                {blog.title}
+              </h3>
+              <p className="text-sm text-gray-600 mb-2">
+                Category:{" "}
+                <span className="font-medium" style={{ color: categoryColor }}>
+                  {blog.category}
+                </span>
+              </p>
+              <p className="text-sm text-gray-500 mb-3">
+                💬 {blog.commentCount} comments
+              </p>
+              <Link
+                to={`/blog-details/${blog._id}`}
+                className="inline-block text-sm font-medium text-white bg-[#023047] px-4 py-1.5 rounded-full hover:bg-[#035070] transition"
+              >
+                View Details
+              </Link>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );

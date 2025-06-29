@@ -96,7 +96,7 @@ export default function Banner() {
 
           {/* Feature icons */}
           <div className="flex flex-wrap gap-3 justify-center md:justify-start text-sm font-medium">
-            <span className="flex items-center gap-2 bg-[#FB8500] text-white px-3 py-1 rounded-full shadow-sm">
+            <span className="flex items-center gap-2 bg-[#035070] text-white px-3 py-1 rounded-full shadow-sm">
               <FaRocket /> Fast & Smooth
             </span>
             <span className="flex items-center gap-2 bg-[#6C63FF] text-white px-3 py-1 rounded-full shadow-sm">
@@ -112,7 +112,7 @@ export default function Banner() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 1.2 }}
-              className="mt-6 inline-flex items-center gap-2 bg-[#023047] text-white px-6 py-3 rounded-full hover:bg-[#035070] transition cursor-pointer"
+              className="mt-6 inline-flex items-center gap-2 bg-[#FB8500] text-white px-6 py-3 rounded-full hover:bg-[#035070] transition cursor-pointer"
             >
               Get Started <FaRocket />
             </motion.button>

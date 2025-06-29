@@ -8,7 +8,7 @@ import axios from "axios";
 const AllBlogs = () => {
   const { user } = use(AuthContext);
   const allBlogs = useLoaderData();
-  console.log(allBlogs);
+  // console.log(allBlogs);
 
   const [wishlist, setWishlist] = useState([]);
 
