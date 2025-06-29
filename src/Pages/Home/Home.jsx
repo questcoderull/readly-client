@@ -5,6 +5,7 @@ import FeaturedBlogs from "../FeaturedBlogs";
 import RecentBlogs from "./recentBlogs";
 import { useLoaderData } from "react-router";
 import MostDiscussedBlog from "./MostDiscussedBlog";
+import MeetTheAuthors from "./MeetTheAuthors";
 
 const Home = () => {
   const blogs = useLoaderData(); // all blogs
@@ -16,6 +17,7 @@ const Home = () => {
       <RecentBlogs></RecentBlogs>
       <Newsletter></Newsletter>
       <MostDiscussedBlog blogs={blogs}></MostDiscussedBlog>
+      <MeetTheAuthors></MeetTheAuthors>
     </div>
   );
 };
