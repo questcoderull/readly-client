@@ -271,7 +271,7 @@ const MeetTheAuthors = () => {
         <div className="text-center mt-12">
           <button
             onClick={handleToggle}
-            className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-medium bg-[#FB8500] text-white rounded-full hover:bg-[#ff9f3b] transition-all duration-300 shadow-md hover:shadow-lg"
+            className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-medium bg-[#FB8500] text-white rounded-full hover:bg-[#ff9f3b] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
           >
             {isGridView ? (
               <>
