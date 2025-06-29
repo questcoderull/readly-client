@@ -1,65 +1,23 @@
-import React, { use } from "react";
+import React from "react";
+import { useLoaderData } from "react-router";
+import blogAnimation from "../assets/formUpdate.json";
 import Lottie from "lottie-react";
-import blogAnimation from "../assets/formAdd.json";
-import { AuthContext } from "../contexts/AuthContext";
-import axios from "axios";
-import { playSoundAlert, playSoundSuccess } from "./Shared/soundEffect";
-import toast from "react-hot-toast";
-import Swal from "sweetalert2";
-import { FaPen, FaPlus } from "react-icons/fa";
+import { FaPen } from "react-icons/fa";
+import { MdUpdate } from "react-icons/md";
 
-const AddBlog = () => {
-  const { user } = use(AuthContext);
-
-  const handleAddBlog = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const title = form.title.value;
-    const photo = form.photo.value;
-    const category = form.category.value;
-    const descriptionShort = form.descriptionShort.value;
-    const descriptionLong = form.descriptionLong.value;
-    const authorName = user.displayName;
-    const authorEmail = user.email;
-
-    const blogInfo = {
-      title,
-      photo,
-      category,
-      descriptionShort,
-      descriptionLong,
-      authorName,
-      authorEmail,
-    };
-
-    console.log(blogInfo);
-
-    // sending to db
-
-    axios
-      .post("http://localhost:3000/blogs", blogInfo)
-      .then((res) => {
-        playSoundSuccess();
-
-        toast.success("Your Blog added successfully", {
-          duration: 4000,
-        });
-        // console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        playSoundAlert();
-        Swal.fire({
-          title: "OOps! couldn't your blog, smoehting went wrong!",
-          icon: "error",
-          draggable: true,
-        });
-      });
-  };
+const UpdateBlog = () => {
+  const {
+    _id,
+    title,
+    photo,
+    category,
+    descriptionShort,
+    descriptionLong,
+    authorName,
+    authorEmail,
+  } = useLoaderData();
 
   return (
-    //polished
-
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 bg-gradient-to-br from-[#E8F3F8] to-[#F1F9FF] rounded-2xl shadow-md my-12">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-center">
         {/* Lottie Animation */}
@@ -71,14 +29,12 @@ const AddBlog = () => {
         <div className="bg-white rounded-2xl p-6 md:p-10 shadow-md border border-gray-200 w-full">
           <div className="text-center mb-6 space-y-2">
             <h2 className="text-3xl font-bold text-[#023047] flex items-center justify-center gap-2">
-              <FaPen /> Add a Blog Post
+              <FaPen /> Update your Blog Post
             </h2>
-            <p className="text-gray-700 text-base">
-              Share your thoughts with the world
-            </p>
+            <p className="text-gray-700 text-base">Make changes that matter.</p>
           </div>
 
-          <form onSubmit={handleAddBlog} className="space-y-6">
+          <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Title */}
               <fieldset className="bg-white p-4 rounded-xl border border-[#90CAF9] shadow-sm">
@@ -88,6 +44,7 @@ const AddBlog = () => {
                 <input
                   type="text"
                   name="title"
+                  defaultValue={title}
                   placeholder="e.g., How AI is changing everything"
                   className="input input-bordered w-full"
                   required
@@ -102,6 +59,7 @@ const AddBlog = () => {
                 <input
                   type="text"
                   name="photo"
+                  defaultValue={photo}
                   placeholder="Paste your blog image URL"
                   className="input input-bordered w-full"
                   required
@@ -115,7 +73,7 @@ const AddBlog = () => {
                 </label>
                 <select
                   name="category"
-                  defaultValue=""
+                  defaultValue={category}
                   className="select select-bordered w-full"
                   required
                 >
@@ -141,6 +99,7 @@ const AddBlog = () => {
                 </label>
                 <textarea
                   name="descriptionShort"
+                  defaultValue={descriptionShort}
                   placeholder="Write a short summary"
                   rows={3}
                   className="textarea textarea-bordered w-full"
@@ -156,6 +115,7 @@ const AddBlog = () => {
               </label>
               <textarea
                 name="descriptionLong"
+                defaultValue={descriptionLong}
                 placeholder="Write your full blog content here..."
                 rows={6}
                 className="textarea textarea-bordered w-full"
@@ -168,7 +128,7 @@ const AddBlog = () => {
               type="submit"
               className="btn bg-[#023047] hover:bg-[#035070] text-white w-full mt-6 rounded-lg text-lg flex items-center justify-center gap-2"
             >
-              <FaPlus /> Publish Blog
+              <MdUpdate /> update Blog
             </button>
           </form>
         </div>
@@ -177,4 +137,4 @@ const AddBlog = () => {
   );
 };
 
-export default AddBlog;
+export default UpdateBlog;

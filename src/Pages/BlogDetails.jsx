@@ -131,7 +131,12 @@ const BlogDetails = () => {
           {/* update button */}
           <div className="text-end">
             {authorEmail === user?.email && (
-              <Link className="btn bg-[#1D3557] text-white  mt-3">Update</Link>
+              <Link
+                to={`/update-blog/${_id}`}
+                className="btn bg-[#1D3557] text-white  mt-3"
+              >
+                Update
+              </Link>
             )}
           </div>
         </div>
@@ -153,7 +158,7 @@ const BlogDetails = () => {
             />
             <button
               type="submit"
-              className="bg-[#1D3557] text-white px-4 py-2 rounded hover:bg-[#163456] transition"
+              className="bg-[#1D3557] text-white px-4 py-2 rounded hover:bg-[#163456] transition cursor-pointer"
             >
               Post Comment
             </button>
