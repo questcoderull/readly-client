@@ -18,6 +18,7 @@ const BlogDetails = () => {
     descriptionLong,
     authorName,
     authorEmail,
+    authorPhoto,
   } = useLoaderData();
 
   const [comment, setComment] = useState([]);
@@ -112,12 +113,24 @@ const BlogDetails = () => {
           {/* Posted By Section */}
           <div className="mt-6 border-t pt-4 text-sm text-gray-700 space-y-1">
             <p className="font-semibold">Posted by:</p>
-            <p>
-              <span className="font-medium">Name:</span> {authorName}
-            </p>
-            <p>
-              <span className="font-medium">Email:</span> {authorEmail}
-            </p>
+
+            <div className="flex items-center gap-3">
+              {authorPhoto && (
+                <img
+                  src={authorPhoto}
+                  alt={authorName}
+                  className="w-10 h-10 rounded-full border"
+                />
+              )}
+              <div>
+                <p>
+                  <span className="font-medium">Name:</span> {authorName}
+                </p>
+                <p>
+                  <span className="font-medium">Email:</span> {authorEmail}
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Short Description */}

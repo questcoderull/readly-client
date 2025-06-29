@@ -7,9 +7,11 @@ import { playSoundAlert, playSoundSuccess } from "./Shared/soundEffect";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { FaPen, FaPlus } from "react-icons/fa";
+import { useNavigate } from "react-router";
 
 const AddBlog = () => {
   const { user } = use(AuthContext);
+  const navigate = useNavigate();
 
   const handleAddBlog = (e) => {
     e.preventDefault();
@@ -21,6 +23,7 @@ const AddBlog = () => {
     const descriptionLong = form.descriptionLong.value;
     const authorName = user.displayName;
     const authorEmail = user.email;
+    const authorPhoto = user.photoURL;
 
     const blogInfo = {
       title,
@@ -30,9 +33,10 @@ const AddBlog = () => {
       descriptionLong,
       authorName,
       authorEmail,
+      authorPhoto,
     };
 
-    console.log(blogInfo);
+    // console.log(blogInfo);
 
     // sending to db
 
@@ -44,13 +48,14 @@ const AddBlog = () => {
         toast.success("Your Blog added successfully", {
           duration: 4000,
         });
+        navigate("/all-blogs");
         // console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
         playSoundAlert();
         Swal.fire({
-          title: "OOps! couldn't your blog, smoehting went wrong!",
+          title: "OOps! couldn't add your blog, smoehting went wrong!",
           icon: "error",
           draggable: true,
         });

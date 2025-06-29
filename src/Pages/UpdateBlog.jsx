@@ -1,21 +1,61 @@
 import React from "react";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import blogAnimation from "../assets/formUpdate.json";
 import Lottie from "lottie-react";
 import { FaPen } from "react-icons/fa";
 import { MdUpdate } from "react-icons/md";
+import axios from "axios";
+import { playSoundAlert, playSoundSuccess } from "./Shared/soundEffect";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const UpdateBlog = () => {
-  const {
-    _id,
-    title,
-    photo,
-    category,
-    descriptionShort,
-    descriptionLong,
-    authorName,
-    authorEmail,
-  } = useLoaderData();
+  const { _id, title, photo, category, descriptionShort, descriptionLong } =
+    useLoaderData();
+
+  const navigete = useNavigate();
+
+  const handleUpdateBlog = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const photo = form.photo.value;
+    const category = form.category.value;
+    const descriptionShort = form.descriptionShort.value;
+    const descriptionLong = form.descriptionLong.value;
+
+    const blogInfo = {
+      title,
+      photo,
+      category,
+      descriptionShort,
+      descriptionLong,
+    };
+
+    // console.log(blogInfo);
+
+    axios
+      .put(`http://localhost:3000/blogs/${_id}`, blogInfo)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount) {
+          playSoundSuccess();
+          toast.success("your blog updated succesfully", {
+            duration: 4000,
+          });
+          navigete("/all-blogs");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        playSoundAlert();
+        Swal.fire({
+          title: "OOps! couldn't update your blog, smoehting went wrong!",
+          icon: "error",
+          draggable: true,
+        });
+      });
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 bg-gradient-to-br from-[#E8F3F8] to-[#F1F9FF] rounded-2xl shadow-md my-12">
@@ -34,7 +74,7 @@ const UpdateBlog = () => {
             <p className="text-gray-700 text-base">Make changes that matter.</p>
           </div>
 
-          <form className="space-y-6">
+          <form onSubmit={handleUpdateBlog} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Title */}
               <fieldset className="bg-white p-4 rounded-xl border border-[#90CAF9] shadow-sm">
