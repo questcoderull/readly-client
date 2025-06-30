@@ -9,7 +9,7 @@ const MostDiscussedBlog = ({ blogs }) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/comments")
+    fetch("https://readly-server.vercel.app/comments")
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, []);

@@ -52,7 +52,7 @@ const BlogDetails = () => {
     // console.log(commentInfo);
 
     axios
-      .post("http://localhost:3000/comments", commentInfo)
+      .post("https://readly-server.vercel.app/comments", commentInfo)
       .then((res) => {
         // console.log(res.data);
         e.target.reset();
@@ -74,7 +74,7 @@ const BlogDetails = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/comments")
+    fetch("https://readly-server.vercel.app/comments")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

@@ -15,7 +15,7 @@ const SocialLogin = () => {
       .then((result) => {
         playSoundSuccess();
         toast.success("Registerd successfully");
-        console.log(result);
+        // console.log(result);
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
@@ -34,7 +34,7 @@ const SocialLogin = () => {
           icon: "error",
           draggable: true,
         });
-        console.log(error);
+        // console.log(error);
       });
   };
   return (

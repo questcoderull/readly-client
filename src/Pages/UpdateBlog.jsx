@@ -35,9 +35,9 @@ const UpdateBlog = () => {
     // console.log(blogInfo);
 
     axios
-      .put(`http://localhost:3000/blogs/${_id}`, blogInfo)
+      .put(`https://readly-server.vercel.app/blogs/${_id}`, blogInfo)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.modifiedCount) {
           playSoundSuccess();
           toast.success("your blog updated succesfully", {
@@ -47,7 +47,7 @@ const UpdateBlog = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         playSoundAlert();
         Swal.fire({
           title: "OOps! couldn't update your blog, smoehting went wrong!",

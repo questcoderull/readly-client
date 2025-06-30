@@ -19,7 +19,7 @@ const BlogCard = ({ blog, wishlist }) => {
   //   if (!user?.email) return;
 
   //   axios
-  //     .get(`http://localhost:3000/wishlist?email=${user.email}`)
+  //     .get(`https://readly-server.vercel.app/wishlist?email=${user.email}`)
   //     .then((res) => {
   //       const wishedBlogs = res.data;
   //       const alreadyWished = wishedBlogs.some(
@@ -79,9 +79,9 @@ const BlogCard = ({ blog, wishlist }) => {
 
     // sending to databse
     axios
-      .post("http://localhost:3000/wishlist", wishedBlog)
+      .post("https://readly-server.vercel.app/wishlist", wishedBlog)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         playSoundSuccess();
         setIsClicked(true);
         toast.success(
@@ -94,7 +94,7 @@ const BlogCard = ({ blog, wishlist }) => {
         );
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         playSoundAlert();
         if (error.response?.status === 409) {
           setIsClicked(true);

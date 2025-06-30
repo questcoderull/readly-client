@@ -18,7 +18,7 @@ const WishlistPage = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/wishlist?email=${user.email}`, {
+        .get(`https://readly-server.vercel.app/wishlist?email=${user.email}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -36,7 +36,7 @@ const WishlistPage = () => {
 
   const handleRemove = (id) => {
     axios
-      .delete(`http://localhost:3000/wishlist/${id}`)
+      .delete(`https://readly-server.vercel.app/wishlist/${id}`)
       .then(() => {
         playSoundSuccess();
         toast.success("Removed from wishlist");

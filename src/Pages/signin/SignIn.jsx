@@ -30,7 +30,7 @@ const SignIn = () => {
       .then((result) => {
         playSoundSuccess();
         toast.success("LoggedIn successfully");
-        console.log(result);
+        // console.log(result);
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
@@ -55,8 +55,8 @@ const SignIn = () => {
           icon: "error",
           draggable: true,
         });
-        console.log(error.message);
-        console.log(error.code);
+        // console.log(error.message);
+        // console.log(error.code);
       });
   };
   return (

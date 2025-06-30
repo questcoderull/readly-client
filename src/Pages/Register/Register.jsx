@@ -41,7 +41,7 @@ const Register = () => {
           .then(() => {
             playSoundSuccess();
             toast.success("Registerd successfully");
-            console.log(result);
+            // console.log(result);
             navigate(`${location.state ? location.state : "/"}`);
           })
           .catch((error) => {
@@ -52,7 +52,7 @@ const Register = () => {
               icon: "error",
               draggable: true,
             });
-            console.log(error);
+            // console.log(error);
           });
       })
       .catch((error) => {
@@ -74,7 +74,7 @@ const Register = () => {
           icon: "error",
           draggable: true,
         });
-        console.log(error);
+        // console.log(error);
       });
   };
 

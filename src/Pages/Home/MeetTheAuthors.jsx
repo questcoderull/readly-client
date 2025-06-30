@@ -12,7 +12,7 @@ const MeetTheAuthors = () => {
   const [showGrid, setShowGrid] = useState(false); // for fade out effect
 
   useEffect(() => {
-    fetch("http://localhost:3000/blogs")
+    fetch("https://readly-server.vercel.app/blogs")
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);

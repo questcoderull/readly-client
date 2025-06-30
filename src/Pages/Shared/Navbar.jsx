@@ -138,7 +138,7 @@ const Navbar = () => {
 
             <li className="group border rounded-md transition-colors duration-300 ease-in-out hover:bg-[#023047]">
               <NavLink
-                to="/wishlist"
+                to="/wishlist-page"
                 className={({ isActive }) =>
                   `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
                     isActive

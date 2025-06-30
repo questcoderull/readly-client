@@ -41,7 +41,7 @@ const AddBlog = () => {
     // sending to db
 
     axios
-      .post("http://localhost:3000/blogs", blogInfo)
+      .post("https://readly-server.vercel.app/blogs", blogInfo)
       .then((res) => {
         playSoundSuccess();
 
@@ -52,7 +52,7 @@ const AddBlog = () => {
         // console.log(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         playSoundAlert();
         Swal.fire({
           title: "OOps! couldn't add your blog, smoehting went wrong!",

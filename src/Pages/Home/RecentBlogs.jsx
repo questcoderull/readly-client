@@ -11,7 +11,7 @@ const RecentBlogs = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/featured-blogs")
+    fetch("https://readly-server.vercel.app/featured-blogs")
       .then((res) => res.json())
       .then((data) => {
         SetFilteredBlog(data);
@@ -24,11 +24,13 @@ const RecentBlogs = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/wishlist?email=${user.email}`)
+        .get(`https://readly-server.vercel.app/wishlist?email=${user.email}`)
         .then((res) => {
           setWishlist(res.data);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          // console.log(err)
+        });
     }
   }, [user?.email]);
 

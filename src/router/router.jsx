@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("http://localhost:3000/blogs"),
+        loader: () => fetch("https://readly-server.vercel.app/blogs"),
         Component: Home,
       },
       {
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       {
         path: "/update-blog/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/blogs/${params.id}`),
+          fetch(`https://readly-server.vercel.app/blogs/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateBlog></UpdateBlog>,
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-blogs",
-        loader: () => fetch("http://localhost:3000/blogs"),
+        loader: () => fetch("https://readly-server.vercel.app/blogs"),
         Component: AllBlogs,
       },
       {
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       {
         path: "/blog-details/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/blogs/${params.id}`),
+          fetch(`https://readly-server.vercel.app/blogs/${params.id}`),
         element: (
           <PrivateRoute>
             <BlogDetails></BlogDetails>

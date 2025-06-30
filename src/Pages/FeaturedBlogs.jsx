@@ -17,7 +17,7 @@ const FeaturedBlogs = () => {
   const [sorting, setSorting] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/blogs")
+    fetch("https://readly-server.vercel.app/blogs")
       .then((res) => res.json())
       .then((data) => {
         const topTen = data

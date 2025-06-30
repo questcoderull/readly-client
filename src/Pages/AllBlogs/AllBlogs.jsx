@@ -18,16 +18,18 @@ const AllBlogs = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/wishlist?email=${user.email}`)
+        .get(`https://readly-server.vercel.app/wishlist?email=${user.email}`)
         .then((res) => {
           setWishlist(res.data);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          // console.log(err);
+        });
     }
   }, [user?.email]);
 
   useEffect(() => {
-    let url = `http://localhost:3000/blogs?`;
+    let url = `https://readly-server.vercel.app/blogs?`;
 
     if (searchText) {
       url += `search=${searchText}&`;
@@ -40,7 +42,9 @@ const AllBlogs = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBlogs(data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+      });
   }, [searchText, selectedCategory]);
 
   return (
