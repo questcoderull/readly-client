@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import {
+  useReactTable,
+  getCoreRowModel,
+  getSortedRowModel,
+  flexRender,
+} from "@tanstack/react-table";
 import { Link } from "react-router";
 import { categoryColors } from "./Shared/colors";
 import { Fade } from "react-awesome-reveal";
 import FeaturedTableSkeleton from "./Shared/FeaturedTableSkeleton";
+import { MdArrowDropUp, MdArrowDropDown, MdUnfoldMore } from "react-icons/md";
 
 const FeaturedBlogs = () => {
-  // const data = useLoaderData();
-  // const topTen = data
-  //   .sort((a, b) => b.descriptionLong.length - a.descriptionLong.length)
-  //   .slice(0, 10);
   const [featuredBlog, setFeaturedBlog] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sorting, setSorting] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/blogs")
@@ -24,32 +28,80 @@ const FeaturedBlogs = () => {
       });
   }, []);
 
-  if (loading) {
-    return <FeaturedTableSkeleton></FeaturedTableSkeleton>;
-  }
+  const columns = useMemo(
+    () => [
+      {
+        header: "Title",
+        accessorKey: "title",
+      },
+      {
+        header: "Category",
+        accessorKey: "category",
+      },
+      {
+        header: "Author Name",
+        accessorKey: "authorName",
+      },
+    ],
+    []
+  );
+
+  const table = useReactTable({
+    data: featuredBlog,
+    columns,
+    state: { sorting },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  });
+
+  if (loading) return <FeaturedTableSkeleton />;
+
   return (
-    <div className="min-h-screen bg-blue-50 py-20 px-6 ">
+    <div className="min-h-screen bg-blue-50 py-20 px-6">
       <h1 className="text-4xl font-extrabold text-center mb-12 text-[#023047] tracking-wide">
         📌 Featured Blogs
       </h1>
 
       <div className="max-w-6xl mx-auto space-y-6">
-        {/* Header */}
+        {/* Table Header */}
         <div className="hidden md:grid grid-cols-12 gap-4 bg-[#023047] rounded-t-lg font-semibold text-white uppercase tracking-wide select-none px-6 py-3">
-          <div className="col-span-6">Title</div>
-          <div className="col-span-3">Category</div>
-          <div className="col-span-3">Author Name</div>
+          {table.getHeaderGroups().map((headerGroup) =>
+            headerGroup.headers.map((header) => (
+              <div
+                key={header.id}
+                className={
+                  header.column.id === "title"
+                    ? "col-span-6 cursor-pointer flex items-center gap-1"
+                    : "col-span-3 cursor-pointer flex items-center justify-center gap-1"
+                }
+                onClick={header.column.getToggleSortingHandler()}
+              >
+                {flexRender(
+                  header.column.columnDef.header,
+                  header.getContext()
+                )}
+                {header.column.getIsSorted() === "asc" ? (
+                  <MdArrowDropUp size={16} />
+                ) : header.column.getIsSorted() === "desc" ? (
+                  <MdArrowDropDown size={16} />
+                ) : (
+                  <MdUnfoldMore size={16} />
+                )}
+              </div>
+            ))
+          )}
         </div>
 
-        {/* Rows */}
-        {featuredBlog.map((blog) => {
+        {/* Table Rows */}
+        {table.getRowModel().rows.map((row) => {
+          const blog = row.original;
           const categoryColor = categoryColors[blog.category] || "#6B7280";
 
           return (
-            <Fade direction="up" duration={500}>
+            <Fade direction="up" duration={500} key={blog._id}>
               <Link
                 to={`/blog-details/${blog._id}`}
-                key={blog._id}
                 className="grid grid-cols-1 md:grid-cols-12 gap-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer px-6 py-5"
               >
                 {/* Title */}
@@ -57,7 +109,7 @@ const FeaturedBlogs = () => {
                   {blog.title}
                 </div>
 
-                {/* Category with dynamic bg color */}
+                {/* Category */}
                 <div
                   className="col-span-3 text-white rounded-md flex items-center justify-center font-semibold"
                   style={{ backgroundColor: categoryColor }}
@@ -65,8 +117,8 @@ const FeaturedBlogs = () => {
                   {blog.category}
                 </div>
 
-                {/* Author Name */}
-                <div className="col-span-3  text-[#023047] rounded-md flex items-center justify-center font-semibold">
+                {/* Author */}
+                <div className="col-span-3 text-[#023047] rounded-md flex items-center justify-center font-semibold">
                   {blog.authorName}
                 </div>
               </Link>
