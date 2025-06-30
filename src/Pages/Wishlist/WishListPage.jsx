@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, use } from "react";
 import axios from "axios";
 import { AuthContext } from "../../contexts/AuthContext";
 import toast from "react-hot-toast";
@@ -9,14 +9,20 @@ import { playSoundAlert, playSoundSuccess } from "../Shared/soundEffect";
 import { categoryColors } from "../Shared/colors";
 
 const WishlistPage = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = use(AuthContext);
   const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(true);
+  const accessToken = user.accessToken;
+  // console.log("accessToken from firebase", accessToken);
 
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/wishlist?email=${user.email}`)
+        .get(`http://localhost:3000/wishlist?email=${user.email}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
         .then((res) => {
           setWishlist(res.data);
           setLoading(false);
