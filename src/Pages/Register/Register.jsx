@@ -13,7 +13,9 @@ import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createUser, loading } = use(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const { createUser } = use(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -27,6 +29,20 @@ const Register = () => {
     const password = form.password.value;
 
     // console.log(name, email, photo, password);
+
+    setErrorMessage("");
+
+    // passwerd valideting
+    const passwordRegEx =
+      /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/;
+
+    if (!passwordRegEx.test(password)) {
+      playSoundAlert();
+      setErrorMessage(
+        "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character.(special charecter: # % $ @ ! atc)"
+      );
+      return;
+    }
 
     // creating user
 
@@ -134,6 +150,13 @@ const Register = () => {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
               </div>
+
+              {/* showing error message for password */}
+              {errorMessage && (
+                <h1 className="mt-4 border p-2 rounded text-red-700">
+                  {errorMessage}
+                </h1>
+              )}
 
               <button className="btn btn-neutral mt-4">Register Now</button>
             </form>

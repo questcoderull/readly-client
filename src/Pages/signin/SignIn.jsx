@@ -10,8 +10,10 @@ import { playSoundAlert, playSoundSuccess } from "../Shared/soundEffect";
 import { Link, useLocation, useNavigate } from "react-router";
 
 const SignIn = () => {
+  const { logInUser } = use(AuthContext);
+
   const [showPassword, setShowPassword] = useState(false);
-  const { logInUser, loading } = use(AuthContext);
+
   const navigate = useNavigate();
   const location = useLocation();
 
