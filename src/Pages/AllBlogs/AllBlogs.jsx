@@ -93,7 +93,7 @@ const AllBlogs = () => {
         setSelectedCategory={setSelectedCategory}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-10 bg-blue-50 p-8 rounded-lg overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-10 bg-blue-50 p-8 rounded-lg overflow-hidden">
         {blogs.map((blog) => (
           <Fade key={blog._id} direction="up" duration={500}>
             <BlogCard key={blog._id} blog={blog} wishlist={wishlist} />

@@ -11,7 +11,15 @@ const BlogCard = ({ blog, wishlist }) => {
   const { user } = use(AuthContext);
   const [isClicked, setIsClicked] = useState(false);
 
-  const { _id, title, photo, descriptionLong, category, authorName } = blog;
+  const {
+    _id,
+    title,
+    photo,
+    descriptionLong,
+    category,
+    authorName,
+    authorPhoto,
+  } = blog;
 
   const badgeColor = categoryColors[category] || "#6B7280";
 
