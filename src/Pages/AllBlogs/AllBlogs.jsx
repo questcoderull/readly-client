@@ -4,7 +4,8 @@ import BlogCard from "../Shared/BlogCard";
 import { Fade } from "react-awesome-reveal";
 import { AuthContext } from "../../contexts/AuthContext";
 import axios from "axios";
-import SearchFilter from "../Shared/SearchFilter"; // 📦 Import new component
+import SearchFilter from "../Shared/SearchFilter";
+import BlogCardSkeleton from "../Shared/BlogCardSkeleton";
 
 const AllBlogs = () => {
   const { user } = React.useContext(AuthContext);
@@ -15,16 +16,41 @@ const AllBlogs = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [blogs, setBlogs] = useState(allBlogs);
 
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     axios
+  //       .get(`https://readly-server.vercel.app/wishlist?email=${user.email}`)
+  //       .then((res) => {
+  //         setWishlist(res.data);
+  //       })
+  //       .catch((err) => {
+  //         // console.log(err);
+  //       });
+  //   }
+  // }, [user?.email]);
+
+  //from gpt
   useEffect(() => {
     if (user?.email) {
-      axios
-        .get(`https://readly-server.vercel.app/wishlist?email=${user.email}`)
-        .then((res) => {
-          setWishlist(res.data);
-        })
-        .catch((err) => {
-          // console.log(err);
-        });
+      // Step 1: token নিও
+      user.getIdToken().then((token) => {
+        // Step 2: token পেলে axios দিয়ে req পাঠাও
+        axios
+          .get(
+            `https://readly-server.vercel.app/wishlist?email=${user.email}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`, // Header-এ token পাঠাও
+              },
+            }
+          )
+          .then((res) => {
+            setWishlist(res.data); // data পেলে wishlist set করো
+          })
+          .catch((err) => {
+            console.error(err); // যদি error হয়
+          });
+      });
     }
   }, [user?.email]);
 
@@ -70,7 +96,7 @@ const AllBlogs = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-10 bg-blue-50 p-8 rounded-lg overflow-hidden">
         {blogs.map((blog) => (
           <Fade key={blog._id} direction="up" duration={500}>
-            <BlogCard blog={blog} wishlist={wishlist} />
+            <BlogCard key={blog._id} blog={blog} wishlist={wishlist} />
           </Fade>
         ))}
       </div>

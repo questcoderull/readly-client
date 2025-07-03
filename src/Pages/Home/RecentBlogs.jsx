@@ -21,16 +21,41 @@ const RecentBlogs = () => {
 
   const [wishlist, setWishlist] = useState([]);
 
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     axios
+  //       .get(`https://readly-server.vercel.app/wishlist?email=${user.email}`)
+  //       .then((res) => {
+  //         setWishlist(res.data);
+  //       })
+  //       .catch((err) => {
+  //         // console.log(err)
+  //       });
+  //   }
+  // }, [user?.email]);
+
+  //from gpt
   useEffect(() => {
     if (user?.email) {
-      axios
-        .get(`https://readly-server.vercel.app/wishlist?email=${user.email}`)
-        .then((res) => {
-          setWishlist(res.data);
-        })
-        .catch((err) => {
-          // console.log(err)
-        });
+      // Step 1: token নিও
+      user.getIdToken().then((token) => {
+        // Step 2: token পেলে axios দিয়ে req পাঠাও
+        axios
+          .get(
+            `https://readly-server.vercel.app/wishlist?email=${user.email}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`, // Header-এ token পাঠাও
+              },
+            }
+          )
+          .then((res) => {
+            setWishlist(res.data); // data পেলে wishlist set করো
+          })
+          .catch((err) => {
+            console.error(err); // যদি error হয়
+          });
+      });
     }
   }, [user?.email]);
 
