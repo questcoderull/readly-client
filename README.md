@@ -1,12 +1,26 @@
-# React + Vite
+name: Readly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+a blog site. where people can write blogs, and can read others. and if they any blog , they can add it to wishList. and also comment in others blogs.
 
-Currently, two official plugins are available:
+so here is the live link to explore.
+https://readly-8b506.web.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+it's a simple blog project made by react.
 
-## Expanding the ESLint configuration
+what all have i used.
+• html,
+• tailwind css.
+• daisy ui.
+• react.
+• react-router.
+• firebase.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+And many others npm packages.
+• react-typo-animation.
+• framer-motion.
+• react-hot-toast.
+• google-font (outfit).
+• lottio-react.
+• react-tooltip.
+• react-awesome-reaveal.
+• react-fast-marque.
