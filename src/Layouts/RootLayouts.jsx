@@ -4,18 +4,18 @@ import Navbar from "../Pages/Shared/Navbar";
 import Footer from "../Pages/Shared/Footer";
 
 import "react-loading-skeleton/dist/skeleton.css";
-import BlogCardSkeleton from "../Pages/Shared/BlogCardSkeleton";
+import Loading from "../Pages/Shared/Loading";
 
 const RootLayouts = () => {
   const { state } = useNavigation();
   return (
-    <div className="bg-primary">
+    <div>
       <div>
         <div>
           <Navbar></Navbar>
           {/* {state == "loading" ? <Loading></Loading> : <Outlet></Outlet>} */}
           {state == "loading" ? (
-            <BlogCardSkeleton></BlogCardSkeleton>
+            <Loading></Loading>
           ) : (
             <div className="max-w-7xl mx-auto">
               <Outlet></Outlet>

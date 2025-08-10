@@ -44,7 +44,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-blogs",
-        loader: () => fetch("https://readly-server.vercel.app/blogs"),
+        // loader: () => fetch("https://readly-server.vercel.app/blogs"),
+        // eikhane mai skeleton dekacci,ei jonno useEffect diye data load kortesi.
         Component: AllBlogs,
       },
       {
