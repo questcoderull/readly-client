@@ -9,7 +9,7 @@ import Loading from "../Pages/Shared/Loading";
 const RootLayouts = () => {
   const { state } = useNavigation();
   return (
-    <div>
+    <div className="bg-blue-50">
       <div>
         <div>
           <Navbar></Navbar>
@@ -17,7 +17,7 @@ const RootLayouts = () => {
           {state == "loading" ? (
             <Loading></Loading>
           ) : (
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-[1500px] mx-auto px-4">
               <Outlet></Outlet>
             </div>
           )}
