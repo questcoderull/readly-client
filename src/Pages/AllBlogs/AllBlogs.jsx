@@ -34,21 +34,21 @@ const AllBlogs = () => {
     if (user?.email) {
       // Step 1: token নিও
       user.getIdToken().then((token) => {
-        // Step 2: token পেলে axios দিয়ে req পাঠাও
+        // Step 2: token paile axios diye request pataw.
         axios
           .get(
             `https://readly-server.vercel.app/wishlist?email=${user.email}`,
             {
               headers: {
-                Authorization: `Bearer ${token}`, // Header-এ token পাঠাও
+                Authorization: `Bearer ${token}`, // Header-e token patanu
               },
             }
           )
           .then((res) => {
-            setWishlist(res.data); // data পেলে wishlist set করো
+            setWishlist(res.data); // data paile wishlist set koro
           })
           .catch((err) => {
-            console.error(err); // যদি error হয়
+            console.error(err); // jodi error hoy
           });
       });
     }
@@ -85,7 +85,7 @@ const AllBlogs = () => {
         </p>
       </div>
 
-      {/* 🔍 Search & Filter Component */}
+      {/*  Search & Filter Component */}
       <SearchFilter
         searchText={searchText}
         setSearchText={setSearchText}

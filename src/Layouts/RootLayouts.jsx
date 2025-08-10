@@ -9,15 +9,21 @@ import BlogCardSkeleton from "../Pages/Shared/BlogCardSkeleton";
 const RootLayouts = () => {
   const { state } = useNavigation();
   return (
-    <div className="max-w-11/12 mx-auto">
-      <Navbar></Navbar>
-      {/* {state == "loading" ? <Loading></Loading> : <Outlet></Outlet>} */}
-      {state == "loading" ? (
-        <BlogCardSkeleton></BlogCardSkeleton>
-      ) : (
-        <Outlet></Outlet>
-      )}
-      <Footer></Footer>
+    <div className="bg-primary">
+      <div>
+        <div>
+          <Navbar></Navbar>
+          {/* {state == "loading" ? <Loading></Loading> : <Outlet></Outlet>} */}
+          {state == "loading" ? (
+            <BlogCardSkeleton></BlogCardSkeleton>
+          ) : (
+            <div className="max-w-7xl mx-auto">
+              <Outlet></Outlet>
+            </div>
+          )}
+          <Footer></Footer>
+        </div>
+      </div>
     </div>
   );
 };
