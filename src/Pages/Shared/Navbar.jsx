@@ -89,21 +89,23 @@ const Navbar = () => {
                 </NavLink>
               </li>
 
-              <li className="group border rounded-md mb-1 transition-colors duration-300 ease-in-out hover:bg-[#023047]">
-                <NavLink
-                  to="/add-blog"
-                  className={({ isActive }) =>
-                    `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
-                      isActive
-                        ? "bg-[#023047] text-white"
-                        : "text-[#0077a3] group-hover:text-white"
-                    }`
-                  }
-                >
-                  <FaPlus className="text-current transition-colors duration-300 ease-in-out" />
-                  <span>Add Blog</span>
-                </NavLink>
-              </li>
+              {user && (
+                <li className="group border rounded-md mb-1 transition-colors duration-300 ease-in-out hover:bg-[#023047]">
+                  <NavLink
+                    to="/add-blog"
+                    className={({ isActive }) =>
+                      `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
+                        isActive
+                          ? "bg-[#023047] text-white"
+                          : "text-[#0077a3] group-hover:text-white"
+                      }`
+                    }
+                  >
+                    <FaPlus className="text-current transition-colors duration-300 ease-in-out" />
+                    <span>Add Blog</span>
+                  </NavLink>
+                </li>
+              )}
 
               <li className="group border rounded-md mb-1 transition-colors duration-300 ease-in-out hover:bg-[#023047]">
                 <NavLink
@@ -137,21 +139,23 @@ const Navbar = () => {
                 </NavLink>
               </li>
 
-              <li className="group border rounded-md transition-colors duration-300 ease-in-out hover:bg-[#023047]">
-                <NavLink
-                  to="/wishlist-page"
-                  className={({ isActive }) =>
-                    `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
-                      isActive
-                        ? "bg-[#023047] text-white"
-                        : "text-[#D62828] group-hover:text-white"
-                    }`
-                  }
-                >
-                  <FaHeart className="text-current transition-colors duration-300 ease-in-out" />
-                  <span>Wishlist</span>
-                </NavLink>
-              </li>
+              {user && (
+                <li className="group border rounded-md transition-colors duration-300 ease-in-out hover:bg-[#023047]">
+                  <NavLink
+                    to="/wishlist-page"
+                    className={({ isActive }) =>
+                      `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
+                        isActive
+                          ? "bg-[#023047] text-white"
+                          : "text-[#D62828] group-hover:text-white"
+                      }`
+                    }
+                  >
+                    <FaHeart className="text-current transition-colors duration-300 ease-in-out" />
+                    <span>Wishlist</span>
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
           <div class="navbar-start">
@@ -181,21 +185,23 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li className="group border rounded-md mr-3 hover:bg-[#023047] transition-colors duration-300 ease-in-out flex items-center">
-              <NavLink
-                to="/add-blog"
-                className={({ isActive }) =>
-                  `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
-                    isActive
-                      ? "bg-[#023047] text-white"
-                      : "text-[#0077a3] hover:text-white"
-                  }`
-                }
-              >
-                <FaPlus className="mr-2 text-current transition-colors duration-300" />
-                Add Blog
-              </NavLink>
-            </li>
+            {user && (
+              <li className="group border rounded-md mr-3 hover:bg-[#023047] transition-colors duration-300 ease-in-out flex items-center">
+                <NavLink
+                  to="/add-blog"
+                  className={({ isActive }) =>
+                    `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
+                      isActive
+                        ? "bg-[#023047] text-white"
+                        : "text-[#0077a3] hover:text-white"
+                    }`
+                  }
+                >
+                  <FaPlus className="mr-2 text-current transition-colors duration-300" />
+                  Add Blog
+                </NavLink>
+              </li>
+            )}
 
             <li className="group border rounded-md mr-3 hover:bg-[#023047] transition-colors duration-300 ease-in-out flex items-center">
               <NavLink
@@ -229,21 +235,23 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li className="group border rounded-md hover:bg-[#023047] transition-colors duration-300 ease-in-out flex items-center">
-              <NavLink
-                to="/wishlist-page"
-                className={({ isActive }) =>
-                  `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
-                    isActive
-                      ? "bg-[#023047] text-white"
-                      : "text-[#D62828] hover:text-white"
-                  }`
-                }
-              >
-                <FaHeart className="mr-2 text-current transition-colors duration-300" />
-                Wishlist
-              </NavLink>
-            </li>
+            {user && (
+              <li className="group border rounded-md hover:bg-[#023047] transition-colors duration-300 ease-in-out flex items-center">
+                <NavLink
+                  to="/wishlist-page"
+                  className={({ isActive }) =>
+                    `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
+                      isActive
+                        ? "bg-[#023047] text-white"
+                        : "text-[#D62828] hover:text-white"
+                    }`
+                  }
+                >
+                  <FaHeart className="mr-2 text-current transition-colors duration-300" />
+                  Wishlist
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
