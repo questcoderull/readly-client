@@ -49,7 +49,7 @@ const MostDiscussedBlog = ({ blogs }) => {
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ type: "tween", duration: 0.7 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="bg-warning p-6 rounded-xl border border-error shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <h3 className="text-xl font-semibold text-primary mb-1">
                 {blog.title}

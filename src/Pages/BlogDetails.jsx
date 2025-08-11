@@ -89,7 +89,7 @@ const BlogDetails = () => {
   return (
     <div className=" py-10 px-4 my-10 rounded-xl">
       {/* Blog Card */}
-      <div className="max-w-4xl mx-auto  border border-gray-200 shadow-md rounded-2xl overflow-hidden transition-transform duration-300 hover:shadow-lg">
+      <div className="max-w-4xl mx-auto bg-warning border border-error shadow-md rounded-2xl overflow-hidden transition-transform duration-300 hover:shadow-lg">
         {/* Image */}
         <img
           className="w-full h-[300px] object-cover"
@@ -154,7 +154,7 @@ const BlogDetails = () => {
       </div>
 
       {/* Comment Section */}
-      <div className="max-w-4xl mx-auto mt-10 border border-gray-200 p-6 rounded-xl shadow space-y-4">
+      <div className="max-w-4xl mx-auto mt-10 border border-error p-6 rounded-xl shadow space-y-4">
         <h3 className="text-xl font-bold text-primary">Comments</h3>
 
         {/* Comment Form */}
@@ -162,14 +162,14 @@ const BlogDetails = () => {
           <form onSubmit={handleAddComment} className="space-y-2">
             <textarea
               placeholder="Write your comment..."
-              className="w-full border border-gray-300 rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="w-full border border-error rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
               rows={3}
               name="comment"
               required
             />
             <button
               type="submit"
-              className="bg-[#1D3557] text-white px-4 py-2 rounded hover:bg-[#163456] transition cursor-pointer"
+              className="bg-primary text-white px-4 py-2 rounded hover:bg-[#163456] transition cursor-pointer"
             >
               Post Comment
             </button>

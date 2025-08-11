@@ -65,7 +65,7 @@ const AllBlogs = () => {
 
   return (
     <div>
-      <div className="text-center mb-8">
+      <div className="text-center my-8">
         <h1 className="text-4xl font-extrabold text-primary mb-2">All Blogs</h1>
         <p className="text-lg text-primary font-medium">
           Explore insightful articles, tips, and stories from various

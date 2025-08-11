@@ -60,7 +60,7 @@ export default function Banner() {
     //   </motion.div>
     // </div>
 
-    <div className="relative overflow-hidden rounded-2xl my-10 shadow-xs shadow-primary/30">
+    <div className="bg-warning border border-error relative overflow-hidden rounded-2xl my-10 shadow-xs shadow-primary/20">
       <div className="absolute -top-10 -left-10 w-60 h-60 bg-blue-300 rounded-full opacity-30 z-0"></div>
       <div className="absolute -bottom-16 -right-16 w-72 h-72 bg-blue-300 rounded-full opacity-30 z-0"></div>
       {/* Main Banner Content */}

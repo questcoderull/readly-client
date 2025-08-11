@@ -73,7 +73,7 @@ const AddBlog = () => {
         </div>
 
         {/* Blog Form */}
-        <div className=" rounded-2xl p-6 md:p-10 shadow-md border border-gray-200 w-full">
+        <div className="bg-warning rounded-2xl p-6 md:p-10 shadow-md border border-error w-full">
           <div className="text-center mb-6 space-y-2">
             <h2 className="text-3xl font-bold text-primary flex items-center justify-center gap-2">
               <FaPen /> Add a Blog Post
@@ -86,7 +86,7 @@ const AddBlog = () => {
           <form onSubmit={handleAddBlog} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Title */}
-              <fieldset className=" p-4 rounded-xl border border-[#90CAF9] shadow-sm">
+              <fieldset className=" p-4 rounded-xl border border-error shadow-sm">
                 <label className="block text-sm font-semibold text-primary mb-1">
                   Blog Title
                 </label>
@@ -100,7 +100,7 @@ const AddBlog = () => {
               </fieldset>
 
               {/* Photo URL */}
-              <fieldset className=" p-4 rounded-xl border border-[#90CAF9] shadow-sm">
+              <fieldset className=" p-4 rounded-xl border border-error shadow-sm">
                 <label className="block text-sm font-semibold text-primary mb-1">
                   Photo URL
                 </label>
@@ -114,7 +114,7 @@ const AddBlog = () => {
               </fieldset>
 
               {/* Category */}
-              <fieldset className=" p-4 rounded-xl border border-[#90CAF9] shadow-sm">
+              <fieldset className=" p-4 rounded-xl border border-error shadow-sm">
                 <label className="block text-sm font-semibold text-primary mb-1">
                   Blog Category
                 </label>
@@ -140,7 +140,7 @@ const AddBlog = () => {
               </fieldset>
 
               {/* Short Description */}
-              <fieldset className=" p-4 rounded-xl border border-[#90CAF9] shadow-sm">
+              <fieldset className=" p-4 rounded-xl border border-error shadow-sm">
                 <label className="block text-sm font-semibold text-primary mb-1">
                   Short Description
                 </label>
@@ -155,7 +155,7 @@ const AddBlog = () => {
             </div>
 
             {/* Long Description */}
-            <fieldset className=" p-4 rounded-xl border border-[#90CAF9] shadow-sm">
+            <fieldset className=" p-4 rounded-xl border border-error shadow-sm">
               <label className="block text-sm font-semibold text-primary mb-1">
                 Full Blog Content
               </label>

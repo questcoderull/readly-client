@@ -66,7 +66,7 @@ const UpdateBlog = () => {
         </div>
 
         {/* Blog Form */}
-        <div className=" rounded-2xl p-6 md:p-10 shadow-md border border-gray-200 w-full">
+        <div className="bg-success rounded-2xl p-6 md:p-10 shadow-md border border-error w-full">
           <div className="text-center mb-6 space-y-2">
             <h2 className="text-3xl font-bold text-primary flex items-center justify-center gap-2">
               <FaPen /> Update your Blog Post

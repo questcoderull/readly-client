@@ -92,7 +92,7 @@ const WishlistPage = () => {
         <ul className="space-y-6">
           {wishlist.map((item) => (
             <Fade direction="up" duration={800} key={item._id}>
-              <li className=" p-6 rounded-2xl shadow-md hover:shadow-xl border border-blue-200 flex justify-between items-start gap-4 transition duration-300">
+              <li className="bg-success p-6 rounded-2xl shadow-md hover:shadow-xl border border-error flex justify-between items-start gap-4 transition duration-300">
                 <div className="flex-1">
                   <Link to={`/blog-details/${item.blogId}`}>
                     <h3 className="text-xl font-semibold text-primary hover:text-secondary underline underline-offset-2 transition">

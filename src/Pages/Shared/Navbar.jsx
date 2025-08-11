@@ -176,7 +176,7 @@ const Navbar = () => {
                   `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
                     isActive
                       ? "bg-primary text-white"
-                      : "text-[#003049] hover:text-white"
+                      : "text-primary hover:text-white"
                   }`
                 }
               >
@@ -193,7 +193,7 @@ const Navbar = () => {
                     `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
                       isActive
                         ? "bg-primary text-white"
-                        : "text-[#0077a3] hover:text-white"
+                        : "text-secondary hover:text-white"
                     }`
                   }
                 >
@@ -210,7 +210,7 @@ const Navbar = () => {
                   `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
                     isActive
                       ? "bg-primary text-white"
-                      : "text-[#669BBC] hover:text-white"
+                      : "text-[#14B8A6] hover:text-white"
                   }`
                 }
               >

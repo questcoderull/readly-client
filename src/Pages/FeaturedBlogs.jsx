@@ -102,7 +102,7 @@ const FeaturedBlogs = () => {
             <Fade direction="up" duration={500} key={blog._id}>
               <Link
                 to={`/blog-details/${blog._id}`}
-                className="grid grid-cols-1 md:grid-cols-12 gap-4  rounded-lg border border-gray-200 shadow hover:shadow-md transition-shadow duration-300 cursor-pointer px-6 py-5"
+                className="bg-warning grid grid-cols-1 md:grid-cols-12 gap-4  rounded-lg border border-error shadow hover:shadow-md transition-shadow duration-300 cursor-pointer px-6 py-5"
               >
                 {/* Title */}
                 <div className="col-span-6 text-primary font-medium text-lg break-words">
