@@ -4,6 +4,7 @@ import commentAnimation from "../../assets/discussion.json";
 import Lottie from "lottie-react";
 import { motion } from "framer-motion";
 import { categoryColors } from "../Shared/colors";
+import { MdComment } from "react-icons/md";
 
 const MostDiscussedBlog = ({ blogs }) => {
   const [comments, setComments] = useState([]);
@@ -60,7 +61,10 @@ const MostDiscussedBlog = ({ blogs }) => {
                   {blog.category}
                 </span>
               </p>
-              <p className="text-sm  mb-3">💬 {blog.commentCount} comments</p>
+              <p className="text-sm mb-3 flex items-center gap-1">
+                <MdComment className="text-base" />
+                {blog.commentCount} comments
+              </p>
               <Link
                 to={`/blog-details/${blog._id}`}
                 className="inline-block text-sm font-medium text-white bg-primary px-4 py-1.5 rounded-full hover:bg-[#035070] transition"

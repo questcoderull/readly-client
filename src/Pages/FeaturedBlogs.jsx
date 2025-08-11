@@ -9,7 +9,12 @@ import { Link } from "react-router";
 import { categoryColors } from "./Shared/colors";
 import { Fade } from "react-awesome-reveal";
 import FeaturedTableSkeleton from "./Shared/FeaturedTableSkeleton";
-import { MdArrowDropUp, MdArrowDropDown, MdUnfoldMore } from "react-icons/md";
+import {
+  MdArrowDropUp,
+  MdArrowDropDown,
+  MdUnfoldMore,
+  MdFeaturedPlayList,
+} from "react-icons/md";
 
 const FeaturedBlogs = () => {
   const [featuredBlog, setFeaturedBlog] = useState([]);
@@ -59,8 +64,8 @@ const FeaturedBlogs = () => {
 
   return (
     <div className="min-h-screen py-20 px-6">
-      <h1 className="text-4xl font-extrabold text-center mb-12 text-primary tracking-wide">
-        📌 Featured Blogs
+      <h1 className="flex items-center justify-center gap-3 text-4xl font-extrabold mb-12 text-primary tracking-wide">
+        <MdFeaturedPlayList /> Featured Blogs
       </h1>
 
       <div className="max-w-6xl mx-auto space-y-6">

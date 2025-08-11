@@ -17,6 +17,7 @@
   --color-warning: #fff;
   --color-error: #bfdbfe; /*for border of card and comments card blue-200 */
   /* --color-error: #dbeafe; for border of card and comments card blue-100 */
+  --color-success-content: #ebebeb; /*for skeleton*/
 }
 /* @plugin "daisyui/theme" {
   name: "dark";
@@ -40,6 +41,7 @@
   --color-warning: #1a2933; /*card bg color*/
   /* --color-error: #375a7f; for border of card and comments card blue-200 er shathe mil rekhe */
   --color-error: #2c3e50; /*for border of card and comments card blue-100 er shathe mil rekhe */
+  --color-success-content: #273b48; /*for skeleton*/
 }
 
 * {

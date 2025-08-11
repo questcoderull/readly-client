@@ -59,21 +59,21 @@ const WishlistPage = () => {
         {[1, 2].map((_, idx) => (
           <div
             key={idx}
-            className="relative p-6 mb-4 bg-gradient-to-br from-blue-50 to-white rounded-2xl shadow-md border border-blue-200"
+            className="relative p-6 mb-4 bg-success rounded-2xl shadow-md border border-error"
           >
             {/* Delete Icon Skeleton */}
-            <div className="absolute top-6 right-6 skeleton h-5 w-5 rounded"></div>
+            <div className="bg-success-content absolute top-6 right-6 skeleton h-5 w-5 rounded"></div>
 
             {/* Title */}
-            <div className="skeleton h-5 w-3/4 mb-4 rounded"></div>
+            <div className="bg-success-content skeleton h-5 w-3/4 mb-4 rounded"></div>
 
             {/* Category */}
             <div className="flex items-center space-x-2 mb-2">
-              <div className="skeleton h-5 w-16 rounded-md"></div>
+              <div className="bg-success-content skeleton h-5 w-16 rounded-md"></div>
             </div>
 
             {/* Author */}
-            <div className="skeleton h-4 w-24 rounded"></div>
+            <div className="bg-success-content skeleton h-4 w-24 rounded"></div>
           </div>
         ))}
       </div>
