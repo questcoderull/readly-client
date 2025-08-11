@@ -21,7 +21,7 @@ const FeaturedTableSkeleton = () => {
         {[...Array(4)].map((_, idx) => (
           <div
             key={idx}
-            className="grid grid-cols-3 bg-success shadow rounded-xl p-4 animate-pulse"
+            className="grid grid-cols-3 bg-success border border-error shadow rounded-xl p-4 animate-pulse"
           >
             <div className="h-4 bg-success-content rounded w-3/4"></div>
             <div className="h-4 bg-success-content rounded w-2/4 mx-auto"></div>
