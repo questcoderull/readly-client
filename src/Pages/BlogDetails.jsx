@@ -186,7 +186,7 @@ const BlogDetails = () => {
             <div
               key={com._id}
               com={com}
-              className="bg-success p-3 flex gap-2 rounded-md border  border-blue-200"
+              className="bg-success  p-3 flex gap-2 rounded-md border  border-error"
             >
               <div className="avatar">
                 <div className="w-10 h-10 rounded-full">

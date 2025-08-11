@@ -121,7 +121,7 @@ const BlogCard = ({ blog, wishlist }) => {
 
   return (
     // polished
-    <div className="bg-warning h-full flex flex-col lg:flex-row items-center p-4 border border-gray-200 rounded-2xl shadow hover:shadow-lg gap-5 transition-transform duration-300 hover:scale-[1.01]">
+    <div className="bg-warning h-full flex flex-col lg:flex-row items-center p-4 border border-error rounded-2xl shadow hover:shadow-lg gap-5 transition-transform duration-300 hover:scale-[1.01]">
       {/* Blog Image */}
       <img
         className="w-full sm:w-[220px] h-[220px] rounded-xl object-cover"
