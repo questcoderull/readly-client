@@ -267,37 +267,7 @@ const Navbar = () => {
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
               >
-                <div className="w-24 rounded-full">
-                  {/* <img
-                  alt="UserImage"
-                  src={
-                    user.photoURL ? user.photoURL : "https://ibb.co/VcGhBb0w"
-                  }
-                /> */}
-
-                  {/* {user && user.photoURL ? (
-                  <>
-                    <img
-                      data-tooltip-id="user-tooltip"
-                      data-tooltip-content={user.displayName}
-                      src={user.photoURL}
-                      alt="User profile"
-                      className="w-20 h-20 rounded-full object-cover cursor-pointer"
-                    />
-                    <Tooltip
-                      id="user-tooltip"
-                      place="bottom"
-                      variant="info"
-                      style={{ fontSize: "14px" }}
-                    />
-                  </>
-                ) : (
-                  <span>
-                    {user?.displayName?.charAt(0).toUpperCase() || "U"}
-                  </span>
-                )} */}
-
-                  {/* from gpt */}
+                <div className="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100 cursor-pointer overflow-visible">
                   {user && user.photoURL ? (
                     <>
                       <img
@@ -305,9 +275,8 @@ const Navbar = () => {
                         data-tooltip-content={user.displayName}
                         src={user.photoURL}
                         alt="User profile"
-                        className="w-20 h-20 rounded-full object-cover cursor-pointer"
+                        className="w-24 h-24 rounded-full object-cover cursor-pointer"
                       />
-
                       <Tooltip
                         id="user-tooltip"
                         place="bottom"
@@ -317,7 +286,7 @@ const Navbar = () => {
                     </>
                   ) : (
                     <div
-                      className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-accent text-lg font-bold uppercase cursor-default"
+                      className="w-24 h-24 flex items-center justify-center rounded-full bg-primary text-accent text-lg font-bold uppercase cursor-default"
                       title={user?.displayName || "User"}
                     >
                       {user?.displayName?.charAt(0) || "U"}
@@ -345,7 +314,7 @@ const Navbar = () => {
               {/* plished version */}
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-60 p-4 shadow-lg border border-blue-400"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-60 p-4 shadow-lg border border-error"
               >
                 {/* User Info */}
                 <li className="mb-4 border-b pb-3">
