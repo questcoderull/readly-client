@@ -8,6 +8,7 @@ import {
   FaHeart,
   FaSignInAlt,
   FaUserPlus,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import logo from "../../assets/readly.png";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -15,6 +16,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
 import { playSoundAlert, playSoundSuccess } from "./soundEffect";
+import { FaEnvelope, FaUser } from "react-icons/fa6";
 
 const Navbar = () => {
   const { user, loading, logOutUser } = use(AuthContext);
@@ -346,7 +348,7 @@ const Navbar = () => {
                   )}
                 </div>
               </div>
-              <ul
+              {/* <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-3 shadow border border-blue-400"
               >
@@ -354,9 +356,39 @@ const Navbar = () => {
                   <p className="justify-between">
                     {user.displayName ? user.displayName : "Your Name"}
                   </p>
+                  <p>{user.email && user.email}</p>
                 </li>
                 <li>
-                  <button onClick={handleSignOut} className="btn btn-neutral">
+                  <button onClick={handleSignOut} className="btn btn-secondary">
+                    Logout
+                  </button>
+                </li>
+              </ul> */}
+
+              {/* plished version */}
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-60 p-4 shadow-lg border border-blue-400"
+              >
+                {/* User Info */}
+                <li className="mb-4 border-b pb-3">
+                  <p className="flex items-center gap-2 text-base font-semibold">
+                    <FaUser className="text-primary" />
+                    {user.displayName ? user.displayName : "Your Name"}
+                  </p>
+                  <p className="flex items-center gap-2 text-sm  mt-1">
+                    <FaEnvelope className="text-primary" />
+                    {user.email ? user.email : "your@email.com"}
+                  </p>
+                </li>
+
+                {/* Action */}
+                <li>
+                  <button
+                    onClick={handleSignOut}
+                    className="btn btn-primary btn-sm text-white flex items-center gap-2"
+                  >
+                    <FaSignOutAlt />
                     Logout
                   </button>
                 </li>

@@ -145,7 +145,7 @@ const Register = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-gray-600 cursor-pointer"
+                  className="text-primary cursor-pointer"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
@@ -158,14 +158,14 @@ const Register = () => {
                 </h1>
               )}
 
-              <button className="btn btn-neutral mt-4">Register Now</button>
+              <button className="btn btn-primary mt-4">Register Now</button>
             </form>
 
             <SocialLogin></SocialLogin>
 
             <p className="mt-3">
               Already have an account?{" "}
-              <Link className="text-blue-900 underline" to="/logIn">
+              <Link className="text-primary underline" to="/logIn">
                 LogIn
               </Link>
             </p>

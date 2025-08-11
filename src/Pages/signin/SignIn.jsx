@@ -93,20 +93,20 @@ const SignIn = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-gray-600 cursor-pointer"
+                  className="text-primary cursor-pointer"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
               </div>
 
-              <button className="btn btn-neutral mt-4">Log In Now</button>
+              <button className="btn btn-primary mt-4">Log In Now</button>
             </form>
 
             <SocialLogin></SocialLogin>
 
             <p className="mt-3">
               Don't have an account?{" "}
-              <Link className="text-blue-900 underline" to="/register">
+              <Link className="text-primary underline" to="/register">
                 Register
               </Link>
             </p>
