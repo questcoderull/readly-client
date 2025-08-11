@@ -23,7 +23,7 @@ export default function Banner() {
     //     transition={{ duration: 1 }}
     //     className="text-center md:text-left max-w-xl space-y-5"
     //   >
-    //     <h1 className="text-3xl md:text-5xl font-bold text-[#023047] leading-tight drop-shadow-md">
+    //     <h1 className="text-3xl md:text-5xl font-bold text-primary leading-tight drop-shadow-md">
     //       <TypeAnimation
     //         sequence={[
     //           "Write. Read. React.",
@@ -36,14 +36,14 @@ export default function Banner() {
     //         repeat={Infinity}
     //       />
     //     </h1>
-    //     <p className="text-lg text-[#FB8500]">
+    //     <p className="text-lg text-secondary">
     //       A modern blog platform built with simplicity, speed, and stunning
     //       design.
     //     </p>
     //     <motion.button
     //       whileHover={{ scale: 1.2 }}
     //       whileTap={{ scale: 1.3 }}
-    //       className="inline-flex items-center gap-2 bg-[#FB8500] text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[#023047] transition"
+    //       className="inline-flex items-center gap-2 bg-secondary text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-primary transition"
     //     >
     //       Get Started <FaArrowRight />
     //     </motion.button>
@@ -60,7 +60,7 @@ export default function Banner() {
     //   </motion.div>
     // </div>
 
-    <div className="relative overflow-hidden rounded-2xl my-10  bg-white">
+    <div className="relative overflow-hidden rounded-2xl my-10 shadow-xs shadow-primary/30">
       <div className="absolute -top-10 -left-10 w-60 h-60 bg-blue-300 rounded-full opacity-30 z-0"></div>
       <div className="absolute -bottom-16 -right-16 w-72 h-72 bg-blue-300 rounded-full opacity-30 z-0"></div>
       {/* Main Banner Content */}
@@ -73,7 +73,7 @@ export default function Banner() {
           className="text-center md:text-left max-w-xl space-y-6"
         >
           {/* ✅ TypeAnimated Headline */}
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[#023047] leading-tight h-[58px]">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-primary leading-tight h-[58px]">
             <TypeAnimation
               sequence={[
                 "Write. Read. React.",
@@ -90,7 +90,7 @@ export default function Banner() {
           </h1>
 
           {/* Normal subtitle */}
-          <p className="text-lg text-gray-700 mt-20">
+          <p className="text-lg  mt-20">
             A platform for creators, readers, and thinkers.
           </p>
 
@@ -112,7 +112,7 @@ export default function Banner() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 1.2 }}
-              className="mt-6 inline-flex items-center gap-2 bg-[#FB8500] text-white px-6 py-3 rounded-full hover:bg-[#035070] transition cursor-pointer"
+              className="mt-6 inline-flex items-center gap-2 bg-secondary text-white px-6 py-3 rounded-full hover:bg-[#035070] transition cursor-pointer"
             >
               Get Started <FaRocket />
             </motion.button>

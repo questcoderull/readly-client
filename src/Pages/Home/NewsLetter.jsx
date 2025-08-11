@@ -28,7 +28,7 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="bg-[#023047] py-10 px-4 md:px-16 rounded-lg shadow-md my-10">
+    <div className="bg-neutral py-10 px-4 md:px-16 rounded-lg shadow-md my-10">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
         {/* 📩 Animation on the LEFT */}
         <motion.div
@@ -47,7 +47,7 @@ const Newsletter = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 3 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#FFB703] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-accent mb-4">
             Stay in the loop!
           </h2>
           <p className="text-white mb-6">
@@ -65,7 +65,7 @@ const Newsletter = () => {
               placeholder="Enter your email"
               className="input input-bordered w-full max-w-md"
             />
-            <button type="submit" className="btn bg-[#FB8500]">
+            <button type="submit" className="btn bg-secondary">
               <FaPaperPlane className="mr-2" />
               Subscribe
             </button>

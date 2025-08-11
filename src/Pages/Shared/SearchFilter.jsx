@@ -23,7 +23,7 @@ const SearchFilter = ({
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
           placeholder="Search by blog title"
-          className="w-full pl-10 pr-4 py-2 bg-blue-50 rounded-md border-b-2 border-[#FB8500] focus:outline-none focus:border-[#FFB703] transition"
+          className="w-full pl-10 pr-4 py-2 bg-blue-50 rounded-md border-b-2 border-secondary focus:outline-none focus:border-accent transition"
           style={{ color: "#1D3557" }}
         />
       </div>
@@ -37,7 +37,7 @@ const SearchFilter = ({
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 bg-blue-50 rounded-md border-b-2 border-[#FB8500] focus:outline-none focus:border-[#FFB703] text-[#1D3557] cursor-pointer transition"
+          className="w-full pl-10 pr-4 py-2 bg-blue-50 rounded-md border-b-2 border-secondary focus:outline-none focus:border-accent text-[#1D3557] cursor-pointer transition"
         >
           <option value="all">All Categories</option>
           <option>Technology</option>

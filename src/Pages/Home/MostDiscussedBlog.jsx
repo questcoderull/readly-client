@@ -25,7 +25,7 @@ const MostDiscussedBlog = ({ blogs }) => {
 
   return (
     <div className=" px-4 md:px-6 py-12">
-      <h2 className="text-3xl font-bold text-[#023047] mb-6 text-center">
+      <h2 className="text-3xl font-bold text-primary mb-6 text-center">
         💬 Most Discussed Blogs
       </h2>
 
@@ -49,23 +49,21 @@ const MostDiscussedBlog = ({ blogs }) => {
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ type: "tween", duration: 0.7 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="p-6 bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <h3 className="text-xl font-semibold text-[#1D3557] mb-1">
+              <h3 className="text-xl font-semibold text-primary mb-1">
                 {blog.title}
               </h3>
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-sm mb-2">
                 Category:{" "}
                 <span className="font-medium" style={{ color: categoryColor }}>
                   {blog.category}
                 </span>
               </p>
-              <p className="text-sm text-gray-500 mb-3">
-                💬 {blog.commentCount} comments
-              </p>
+              <p className="text-sm  mb-3">💬 {blog.commentCount} comments</p>
               <Link
                 to={`/blog-details/${blog._id}`}
-                className="inline-block text-sm font-medium text-white bg-[#023047] px-4 py-1.5 rounded-full hover:bg-[#035070] transition"
+                className="inline-block text-sm font-medium text-white bg-primary px-4 py-1.5 rounded-full hover:bg-[#035070] transition"
               >
                 View Details
               </Link>

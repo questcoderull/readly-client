@@ -58,14 +58,14 @@ const FeaturedBlogs = () => {
   if (loading) return <FeaturedTableSkeleton />;
 
   return (
-    <div className="min-h-screen bg-blue-50 py-20 px-6">
-      <h1 className="text-4xl font-extrabold text-center mb-12 text-[#023047] tracking-wide">
+    <div className="min-h-screen py-20 px-6">
+      <h1 className="text-4xl font-extrabold text-center mb-12 text-primary tracking-wide">
         📌 Featured Blogs
       </h1>
 
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Table Header */}
-        <div className="hidden md:grid grid-cols-12 gap-4 bg-[#023047] rounded-t-lg font-semibold text-white uppercase tracking-wide select-none px-6 py-3">
+        <div className="hidden md:grid grid-cols-12 gap-4 bg-primary rounded-t-lg font-semibold text-white uppercase tracking-wide select-none px-6 py-3">
           {table.getHeaderGroups().map((headerGroup) =>
             headerGroup.headers.map((header) => (
               <div
@@ -102,10 +102,10 @@ const FeaturedBlogs = () => {
             <Fade direction="up" duration={500} key={blog._id}>
               <Link
                 to={`/blog-details/${blog._id}`}
-                className="grid grid-cols-1 md:grid-cols-12 gap-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer px-6 py-5"
+                className="grid grid-cols-1 md:grid-cols-12 gap-4  rounded-lg border border-gray-200 shadow hover:shadow-md transition-shadow duration-300 cursor-pointer px-6 py-5"
               >
                 {/* Title */}
-                <div className="col-span-6 text-[#023047] font-medium text-lg break-words">
+                <div className="col-span-6 text-primary font-medium text-lg break-words">
                   {blog.title}
                 </div>
 
@@ -118,7 +118,7 @@ const FeaturedBlogs = () => {
                 </div>
 
                 {/* Author */}
-                <div className="col-span-3 text-[#023047] rounded-md flex items-center justify-center font-semibold">
+                <div className="col-span-3 text-primary rounded-md flex items-center justify-center font-semibold">
                   {blog.authorName}
                 </div>
               </Link>

@@ -82,7 +82,7 @@ const WishlistPage = () => {
 
   return (
     <div className="p-6 max-w-4xl mb-20 mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-center text-[#1D3557]">
+      <h2 className="text-3xl font-bold mb-6 text-center text-primary">
         Your Wishlist
       </h2>
 
@@ -92,15 +92,15 @@ const WishlistPage = () => {
         <ul className="space-y-6">
           {wishlist.map((item) => (
             <Fade direction="up" duration={800} key={item._id}>
-              <li className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl shadow-md hover:shadow-xl border border-blue-200 flex justify-between items-start gap-4 transition duration-300">
+              <li className=" p-6 rounded-2xl shadow-md hover:shadow-xl border border-blue-200 flex justify-between items-start gap-4 transition duration-300">
                 <div className="flex-1">
                   <Link to={`/blog-details/${item.blogId}`}>
-                    <h3 className="text-xl font-semibold text-[#1D3557] hover:text-[#FB8500] underline underline-offset-2 transition">
+                    <h3 className="text-xl font-semibold text-primary hover:text-secondary underline underline-offset-2 transition">
                       {item.title}
                     </h3>
                   </Link>
 
-                  <div className="mt-2 text-sm text-gray-700 space-y-1">
+                  <div className="mt-2 text-sm text-primary space-y-1">
                     <p>
                       <span className="font-semibold">Category:</span>{" "}
                       <span

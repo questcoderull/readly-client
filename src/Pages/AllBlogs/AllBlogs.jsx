@@ -66,10 +66,8 @@ const AllBlogs = () => {
   return (
     <div>
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-extrabold text-[#1D3557] mb-2">
-          All Blogs
-        </h1>
-        <p className="text-lg text-[#1D3557] font-medium">
+        <h1 className="text-4xl font-extrabold text-primary mb-2">All Blogs</h1>
+        <p className="text-lg text-primary font-medium">
           Explore insightful articles, tips, and stories from various
           categories.
         </p>
@@ -83,7 +81,7 @@ const AllBlogs = () => {
         setSelectedCategory={setSelectedCategory}
       />
       {loading && <BlogCardSkeleton></BlogCardSkeleton>}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-10 bg-blue-50 p-8 rounded-lg overflow-hidden items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-10 p-8 rounded-lg overflow-hidden items-stretch">
         {blogs.map((blog) => (
           <Fade key={blog._id} direction="up" duration={500}>
             <BlogCard blog={blog} wishlist={wishlist} />

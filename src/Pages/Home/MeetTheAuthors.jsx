@@ -49,7 +49,7 @@ const MeetTheAuthors = () => {
   };
 
   return (
-    // <div className="  bg-[#023047] rounded-lg px-4 md:px-8 py-16 mt-10 mb-20">
+    // <div className="  bg-primary rounded-lg px-4 md:px-8 py-16 mt-10 mb-20">
     //   {/* Header */}
     //   <h2 className="text-4xl font-bold text-white mb-10 text-center leading-snug">
     //     👨‍💻 Meet the Authors
@@ -72,26 +72,26 @@ const MeetTheAuthors = () => {
     //               {authors.map((author, index) => (
     //                 <div
     //                   key={index}
-    //                   className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-[#FB8500] text-center"
+    //                   className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-secondary text-center"
     //                 >
     //                   {author.photo ? (
     //                     <img
     //                       src={author.photo}
     //                       alt={author.name}
-    //                       className="w-20 h-20 rounded-full mx-auto border-2 border-[#FB8500] object-cover"
+    //                       className="w-20 h-20 rounded-full mx-auto border-2 border-secondary object-cover"
     //                     />
     //                   ) : (
-    //                     <div className="w-20 h-20 mx-auto rounded-full bg-[#FB8500] text-white flex items-center justify-center text-3xl font-bold">
+    //                     <div className="w-20 h-20 mx-auto rounded-full bg-secondary text-white flex items-center justify-center text-3xl font-bold">
     //                       {author.name?.charAt(0).toUpperCase()}
     //                     </div>
     //                   )}
-    //                   <h3 className="text-xl font-semibold text-[#023047] mt-4">
+    //                   <h3 className="text-xl font-semibold text-primary mt-4">
     //                     {author.name}
     //                   </h3>
     //                   <p className="text-sm text-gray-500 mt-1">
     //                     {author.email}
     //                   </p>
-    //                   <p className="text-sm text-[#FB8500] font-medium mt-2">
+    //                   <p className="text-sm text-secondary font-medium mt-2">
     //                     ✍️ {author.count} blog{author.count > 1 ? "s" : ""}
     //                   </p>
     //                 </div>
@@ -121,24 +121,24 @@ const MeetTheAuthors = () => {
     //               {authors.map((author, index) => (
     //                 <div
     //                   key={index}
-    //                   className="min-w-[240px] flex-shrink-0 bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-[#FB8500] text-center"
+    //                   className="min-w-[240px] flex-shrink-0 bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-secondary text-center"
     //                 >
     //                   {author.photo ? (
     //                     <img
     //                       src={author.photo}
     //                       alt={author.name}
-    //                       className="w-16 h-16 rounded-full mx-auto border-2 border-[#FB8500] object-cover"
+    //                       className="w-16 h-16 rounded-full mx-auto border-2 border-secondary object-cover"
     //                     />
     //                   ) : (
-    //                     <div className="w-16 h-16 mx-auto rounded-full bg-[#FB8500] text-white flex items-center justify-center text-2xl font-bold">
+    //                     <div className="w-16 h-16 mx-auto rounded-full bg-secondary text-white flex items-center justify-center text-2xl font-bold">
     //                       {author.name?.charAt(0).toUpperCase()}
     //                     </div>
     //                   )}
-    //                   <h3 className="text-lg font-semibold text-[#023047] mt-3">
+    //                   <h3 className="text-lg font-semibold text-primary mt-3">
     //                     {author.name}
     //                   </h3>
     //                   <p className="text-sm text-gray-500">{author.email}</p>
-    //                   <p className="text-sm text-[#FB8500] font-medium mt-1">
+    //                   <p className="text-sm text-secondary font-medium mt-1">
     //                     ✍️ {author.count} blog{author.count > 1 ? "s" : ""}
     //                   </p>
     //                 </div>
@@ -153,7 +153,7 @@ const MeetTheAuthors = () => {
     //     <div className="text-center mt-12">
     //       <button
     //         onClick={handleToggle}
-    //         className="inline-block px-6 py-2.5 text-sm font-medium bg-[#FB8500] text-white rounded-full hover:bg-[#ff9f3b] transition-all duration-300 shadow-md hover:shadow-lg"
+    //         className="inline-block px-6 py-2.5 text-sm font-medium bg-secondary text-white rounded-full hover:bg-[#ff9f3b] transition-all duration-300 shadow-md hover:shadow-lg"
     //       >
     //         {isGridView ? "🔙 View Less" : "🔎 View All"}
     //       </button>
@@ -162,7 +162,7 @@ const MeetTheAuthors = () => {
     // </div>
 
     //plished
-    <div className="bg-[#023047] rounded-lg px-4 md:px-8 py-16 mt-10 mb-20">
+    <div className="bg-neutral rounded-lg px-4 md:px-8 py-16 mt-10 mb-20">
       {/* Header */}
       <h2 className="text-4xl font-bold text-white mb-10 text-center flex items-center justify-center gap-2 leading-snug">
         <HiOutlineUsers className="text-white text-4xl" />
@@ -190,26 +190,26 @@ const MeetTheAuthors = () => {
                     triggerOnce
                     cascade
                   >
-                    <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-[#FB8500] text-center">
+                    <div className="bg-info p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-secondary text-center">
                       {author.photo ? (
                         <img
                           src={author.photo}
                           alt={author.name}
-                          className="w-20 h-20 rounded-full mx-auto border-2 border-[#FB8500] object-cover"
+                          className="w-20 h-20 rounded-full mx-auto border-2 border-secondary object-cover"
                         />
                       ) : (
-                        <div className="w-20 h-20 mx-auto rounded-full bg-[#FB8500] text-white flex items-center justify-center text-3xl font-bold">
+                        <div className="w-20 h-20 mx-auto rounded-full bg-secondary text-white flex items-center justify-center text-3xl font-bold">
                           {author.name?.charAt(0).toUpperCase()}
                         </div>
                       )}
-                      <h3 className="text-xl font-semibold text-[#023047] mt-4">
+                      <h3 className="text-xl font-semibold text-primary mt-4">
                         {author.name}
                       </h3>
-                      <p className="text-sm text-gray-500 mt-1">
+                      <p className="text-sm text-praimary mt-1">
                         {author.email}
                       </p>
-                      <p className="text-sm text-[#023047] font-medium mt-2 flex items-center justify-center gap-1">
-                        <FaPenNib className="text-[#FB8500] text-sm" />
+                      <p className="text-sm text-primary font-medium mt-2 flex items-center justify-center gap-1">
+                        <FaPenNib className="text-secondary text-sm" />
                         {author.count} blog{author.count > 1 ? "s" : ""}
                       </p>
                     </div>
@@ -239,24 +239,24 @@ const MeetTheAuthors = () => {
                   {authors.map((author, index) => (
                     <div
                       key={index}
-                      className="min-w-[240px] flex-shrink-0 bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-[#FB8500] text-center"
+                      className="bg-info min-w-[240px] flex-shrink-0 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-secondary text-center"
                     >
                       {author.photo ? (
                         <img
                           src={author.photo}
                           alt={author.name}
-                          className="w-16 h-16 rounded-full mx-auto border-2 border-[#FB8500] object-cover"
+                          className="w-16 h-16 rounded-full mx-auto border-2 border-secondary object-cover"
                         />
                       ) : (
-                        <div className="w-16 h-16 mx-auto rounded-full bg-[#FB8500] text-white flex items-center justify-center text-2xl font-bold">
+                        <div className="w-16 h-16 mx-auto rounded-full bg-secondary text-white flex items-center justify-center text-2xl font-bold">
                           {author.name?.charAt(0).toUpperCase()}
                         </div>
                       )}
-                      <h3 className="text-lg font-semibold text-[#023047] mt-3">
+                      <h3 className="text-lg font-semibold text-primary mt-3">
                         {author.name}
                       </h3>
-                      <p className="text-sm text-gray-500">{author.email}</p>
-                      <p className="text-sm text-[#FB8500] font-medium mt-1">
+                      <p className="text-sm text-primary">{author.email}</p>
+                      <p className="text-sm text-secondary font-medium mt-1">
                         ✍️ {author.count} blog{author.count > 1 ? "s" : ""}
                       </p>
                     </div>
@@ -271,7 +271,7 @@ const MeetTheAuthors = () => {
         <div className="text-center mt-12">
           <button
             onClick={handleToggle}
-            className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-medium bg-[#FB8500] text-white rounded-full hover:bg-[#ff9f3b] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-medium bg-secondary text-white rounded-full hover:bg-[#ff9f3b] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
           >
             {isGridView ? (
               <>

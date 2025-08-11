@@ -58,7 +58,7 @@ const UpdateBlog = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 bg-gradient-to-br from-[#E8F3F8] to-[#F1F9FF] rounded-2xl shadow-md my-12">
+    <div className="max-w-7xl mx-auto px-4 md:px-6 py-12  rounded-2xl shadow-md my-12">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-center">
         {/* Lottie Animation */}
         <div className="hidden md:block w-full max-w-md mx-auto">
@@ -66,19 +66,19 @@ const UpdateBlog = () => {
         </div>
 
         {/* Blog Form */}
-        <div className="bg-white rounded-2xl p-6 md:p-10 shadow-md border border-gray-200 w-full">
+        <div className=" rounded-2xl p-6 md:p-10 shadow-md border border-gray-200 w-full">
           <div className="text-center mb-6 space-y-2">
-            <h2 className="text-3xl font-bold text-[#023047] flex items-center justify-center gap-2">
+            <h2 className="text-3xl font-bold text-primary flex items-center justify-center gap-2">
               <FaPen /> Update your Blog Post
             </h2>
-            <p className="text-gray-700 text-base">Make changes that matter.</p>
+            <p className="text-primary text-base">Make changes that matter.</p>
           </div>
 
           <form onSubmit={handleUpdateBlog} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Title */}
-              <fieldset className="bg-white p-4 rounded-xl border border-[#90CAF9] shadow-sm">
-                <label className="block text-sm font-semibold text-[#023047] mb-1">
+              <fieldset className=" p-4 rounded-xl border border-[#90CAF9] shadow-sm">
+                <label className="block text-sm font-semibold text-primary mb-1">
                   Blog Title
                 </label>
                 <input
@@ -92,8 +92,8 @@ const UpdateBlog = () => {
               </fieldset>
 
               {/* Photo URL */}
-              <fieldset className="bg-white p-4 rounded-xl border border-[#90CAF9] shadow-sm">
-                <label className="block text-sm font-semibold text-[#023047] mb-1">
+              <fieldset className=" p-4 rounded-xl border border-[#90CAF9] shadow-sm">
+                <label className="block text-sm font-semibold text-primary mb-1">
                   Photo URL
                 </label>
                 <input
@@ -107,8 +107,8 @@ const UpdateBlog = () => {
               </fieldset>
 
               {/* Category */}
-              <fieldset className="bg-white p-4 rounded-xl border border-[#90CAF9] shadow-sm">
-                <label className="block text-sm font-semibold text-[#023047] mb-1">
+              <fieldset className=" p-4 rounded-xl border border-[#90CAF9] shadow-sm">
+                <label className="block text-sm font-semibold text-primary mb-1">
                   Blog Category
                 </label>
                 <select
@@ -133,8 +133,8 @@ const UpdateBlog = () => {
               </fieldset>
 
               {/* Short Description */}
-              <fieldset className="bg-white p-4 rounded-xl border border-[#90CAF9] shadow-sm">
-                <label className="block text-sm font-semibold text-[#023047] mb-1">
+              <fieldset className=" p-4 rounded-xl border border-[#90CAF9] shadow-sm">
+                <label className="block text-sm font-semibold text-primary mb-1">
                   Short Description
                 </label>
                 <textarea
@@ -149,8 +149,8 @@ const UpdateBlog = () => {
             </div>
 
             {/* Long Description */}
-            <fieldset className="bg-white p-4 rounded-xl border border-[#90CAF9] shadow-sm">
-              <label className="block text-sm font-semibold text-[#023047] mb-1">
+            <fieldset className=" p-4 rounded-xl border border-[#90CAF9] shadow-sm">
+              <label className="block text-sm font-semibold text-primary mb-1">
                 Full Blog Content
               </label>
               <textarea
@@ -166,7 +166,7 @@ const UpdateBlog = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="btn bg-[#023047] hover:bg-[#035070] text-white w-full mt-6 rounded-lg text-lg flex items-center justify-center gap-2"
+              className="btn bg-primary hover:bg-[#035070] text-white w-full mt-6 rounded-lg text-lg flex items-center justify-center gap-2"
             >
               <MdUpdate /> update Blog
             </button>

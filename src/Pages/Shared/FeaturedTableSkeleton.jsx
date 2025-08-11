@@ -2,8 +2,8 @@
 
 const FeaturedTableSkeleton = () => {
   return (
-    <div className="min-h-screen bg-blue-50 py-20 px-6 ">
-      <h1 className="text-4xl font-extrabold text-center mb-12 text-[#023047] tracking-wide">
+    <div className="min-h-screen py-20 px-6 ">
+      <h1 className="text-4xl font-extrabold text-center mb-12 text-primary tracking-wide">
         📌 Featured Blogs
       </h1>
       <div className="space-y-4 mt-8 px-12">

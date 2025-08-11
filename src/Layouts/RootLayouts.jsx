@@ -9,7 +9,7 @@ import Loading from "../Pages/Shared/Loading";
 const RootLayouts = () => {
   const { state } = useNavigation();
   return (
-    <div className="bg-blue-50">
+    <div>
       <div>
         <div>
           <Navbar></Navbar>

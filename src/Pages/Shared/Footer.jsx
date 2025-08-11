@@ -3,7 +3,7 @@ import { FaGithub } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className=" bg-blue-100 text-base-content p-10">
+    <footer className="bg-success text-base-content p-10">
       <div className="footer sm:footer-horizontal max-w-[1500px] px-4 mx-auto">
         <nav>
           <h6 className="footer-title">Services</h6>

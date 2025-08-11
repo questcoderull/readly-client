@@ -13,7 +13,7 @@ const SemothingWentWrong = () => {
             <Lottie animationData={errorAnimation} loop={true}></Lottie>
           </div>
 
-          <h1 className="text-3xl font-bold text-[#FB8500] lg:-mt-20">
+          <h1 className="text-3xl font-bold text-secondary lg:-mt-20">
             Something went wrong
           </h1>
           <p className="text-base-content">
@@ -23,7 +23,7 @@ const SemothingWentWrong = () => {
 
           <Link
             to="/"
-            className="btn border-none text-white bg-[#023047] hover:bg-[#FFB703] transition-colors duration-300"
+            className="btn border-none text-white bg-primary hover:bg-accent transition-colors duration-300"
           >
             ⬅ Go Back Home
           </Link>

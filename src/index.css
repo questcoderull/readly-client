@@ -1,7 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: light --default, dark;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #023047;
+  --color-secondary: #fb8500;
+  --color-accent: #ffb703;
+  --color-neutral: #023047;
+  --color-info: #fff;
+  --color-success: #eff6ff;
+  --color-warning: #fff;
+}
+/* @plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #fff;
+  --color-secondary: #fb8500;
+  --color-accent: #ffb703;
+  --color-neutral: #023047;
+} */
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  /* --color-primary: #8ecae6; soft light blue for headings/buttons */
+  /* --color-primary: #4cc9f0; soft light blue for headings/buttons */
+  /* --color-primary: #0491b5; final 1 */
+  --color-primary: #3a86ff; /*final 2 */
+  --color-secondary: #ffb703; /* warm golden accent */
+  --color-accent: #fb8500; /* bright orange for highlights */
+  --color-neutral: #023047; /* deep navy for card backgrounds */
+  --color-info: #023047;
+  --color-success: #1a2933; /*for footer and comments */
+  --color-warning: #1a2933; /*card bg color*/
+}
 
 * {
   font-family: "Outfit", sans-serif;

@@ -87,9 +87,9 @@ const BlogDetails = () => {
   }, [_id]);
 
   return (
-    <div className="bg-blue-50 py-10 px-4 my-10 rounded-xl">
+    <div className=" py-10 px-4 my-10 rounded-xl">
       {/* Blog Card */}
-      <div className="max-w-4xl mx-auto bg-white border border-gray-200 shadow-md rounded-2xl overflow-hidden transition-transform duration-300 hover:shadow-lg">
+      <div className="max-w-4xl mx-auto  border border-gray-200 shadow-md rounded-2xl overflow-hidden transition-transform duration-300 hover:shadow-lg">
         {/* Image */}
         <img
           className="w-full h-[300px] object-cover"
@@ -108,10 +108,10 @@ const BlogDetails = () => {
           </span>
 
           {/* Title */}
-          <h2 className="text-3xl font-bold text-[#1D3557]">{title}</h2>
+          <h2 className="text-3xl font-bold text-primary">{title}</h2>
 
           {/* Posted By Section */}
-          <div className="mt-6 border-t pt-4 text-sm text-gray-700 space-y-1">
+          <div className="mt-6 border-t pt-4 text-sm  space-y-1">
             <p className="font-semibold">Posted by:</p>
 
             <div className="flex items-center gap-3">
@@ -134,19 +134,17 @@ const BlogDetails = () => {
           </div>
 
           {/* Short Description */}
-          <p className="text-gray-600 text-base">{descriptionShort}</p>
+          <p className=" text-base">{descriptionShort}</p>
 
           {/* Long Description */}
-          <p className="text-gray-700 text-sm leading-relaxed">
-            {descriptionLong}
-          </p>
+          <p className=" text-sm leading-relaxed">{descriptionLong}</p>
 
           {/* update button */}
           <div className="text-end">
             {authorEmail === user?.email && (
               <Link
                 to={`/update-blog/${_id}`}
-                className="btn bg-[#1D3557] text-white  mt-3"
+                className="btn bg-primary text-white  mt-3"
               >
                 Update
               </Link>
@@ -156,8 +154,8 @@ const BlogDetails = () => {
       </div>
 
       {/* Comment Section */}
-      <div className="max-w-4xl mx-auto mt-10 bg-white p-6 rounded-xl shadow space-y-4">
-        <h3 className="text-xl font-bold text-[#1D3557]">Comments</h3>
+      <div className="max-w-4xl mx-auto mt-10 border border-gray-200 p-6 rounded-xl shadow space-y-4">
+        <h3 className="text-xl font-bold text-primary">Comments</h3>
 
         {/* Comment Form */}
         {user ? (
@@ -188,7 +186,7 @@ const BlogDetails = () => {
             <div
               key={com._id}
               com={com}
-              className="bg-blue-50 p-3 flex gap-2 rounded-md border border-blue-100"
+              className="bg-success p-3 flex gap-2 rounded-md border  border-blue-200"
             >
               <div className="avatar">
                 <div className="w-10 h-10 rounded-full">
@@ -196,13 +194,13 @@ const BlogDetails = () => {
                 </div>
               </div>
               <div>
-                <p className="text-sm font-semibold text-[#1D3557]">
+                <p className="text-sm font-semibold text-primary">
                   {com.userName}
                   <span className="text-xs ml-2 text-gray-500">
                     {new Date(com.createdAt).toLocaleString()}
                   </span>
                 </p>
-                <p className="text-sm text-gray-700 mt-1">{com.comment}</p>
+                <p className="text-sm  mt-1">{com.comment}</p>
               </div>
             </div>
           ))}
@@ -211,11 +209,11 @@ const BlogDetails = () => {
 
       {/* Navigation Buttons */}
       <div className="mt-8 text-center space-x-4 space-y-2">
-        <Link to="/" className="btn bg-[#1D3557] text-white">
+        <Link to="/" className="btn bg-primary text-white">
           <span className="hidden md:block">Back To Home</span>
           <span className="block md:hidden">Home</span>
         </Link>
-        <Link to="/all-blogs" className="btn bg-[#FB8500] text-white">
+        <Link to="/all-blogs" className="btn bg-secondary text-white">
           <span className="hidden md:block">All Blogs</span>
           <span className="block md:hidden">Blogs</span>
         </Link>

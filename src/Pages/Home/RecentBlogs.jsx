@@ -60,9 +60,9 @@ const RecentBlogs = () => {
   }, [user?.email]);
 
   return (
-    <div className="my-10 bg-blue-50 p-7 rounded-2xl">
+    <div className="my-10 p-7 rounded-2xl">
       <Bounce>
-        <h1 className="text-center text-3xl md:text-5xl font-bold text-[#023047] leading-tight">
+        <h1 className="text-center text-3xl md:text-5xl font-bold text-primary leading-tight">
           Recent Blogs
         </h1>
       </Bounce>
