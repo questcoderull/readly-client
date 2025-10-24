@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import RootLayouts from "../Layouts/RootLayouts";
+import DashboardLayout from "../Layouts/DashboardLayout";
 import SemothingWentWrong from "../Pages/ErrorPages/SemothingWentWrong";
 import PageNOtFound from "../Pages/ErrorPages/PageNOtFound";
 import Home from "../Pages/Home/Home";
@@ -12,6 +13,11 @@ import PrivateRoute from "../contexts/PrivabeteRoute";
 import FeaturedBlogs from "../Pages/FeaturedBlogs";
 import WishlistPage from "../Pages/Wishlist/WishListPage";
 import UpdateBlog from "../Pages/UpdateBlog";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import MyBlogs from "../Pages/Dashboard/MyBlogs";
+import MyWishlist from "../Pages/Dashboard/MyWishlist";
+import MyComments from "../Pages/Dashboard/MyComments";
+import EditProfile from "../Pages/Dashboard/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +83,40 @@ const router = createBrowserRouter([
       {
         path: "/logIn",
         Component: SignIn,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        Component: Dashboard,
+      },
+      {
+        path: "my-blogs",
+        Component: MyBlogs,
+      },
+      {
+        path: "add-blog",
+        Component: AddBlog,
+      },
+      {
+        path: "my-wishlist",
+        Component: MyWishlist,
+      },
+      {
+        path: "my-comments",
+        Component: MyComments,
+      },
+      {
+        path: "edit-profile",
+        Component: EditProfile,
       },
     ],
   },

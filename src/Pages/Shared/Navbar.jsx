@@ -9,6 +9,7 @@ import {
   FaSignInAlt,
   FaUserPlus,
   FaSignOutAlt,
+  FaTachometerAlt,
 } from "react-icons/fa";
 import { BsSunFill, BsMoonStarsFill } from "react-icons/bs";
 import logo from "../../assets/readly.png";
@@ -91,6 +92,24 @@ const Navbar = () => {
                   <span>Home</span>
                 </NavLink>
               </li>
+
+              {user && (
+                <li className="group border rounded-md mb-1 transition-colors duration-300 ease-in-out hover:bg-primary">
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      `flex items-center space-x-2 px-3 py-2 w-full rounded transition-colors duration-300 ease-in-out ${
+                        isActive
+                          ? "bg-primary text-white"
+                          : "text-[#6366F1] group-hover:text-white"
+                      }`
+                    }
+                  >
+                    <FaTachometerAlt className="text-current transition-colors duration-300 ease-in-out" />
+                    <span>Dashboard</span>
+                  </NavLink>
+                </li>
+              )}
 
               {user && (
                 <li className="group border rounded-md mb-1 transition-colors duration-300 ease-in-out hover:bg-primary">
@@ -187,6 +206,24 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
+
+            {user && (
+              <li className="group border rounded-md mr-3 hover:bg-primary transition-colors duration-300 ease-in-out flex items-center">
+                <NavLink
+                  to="/dashboard"
+                  className={({ isActive }) =>
+                    `flex items-center w-full px-3 py-2 rounded transition-colors duration-300 ease-in-out ${
+                      isActive
+                        ? "bg-primary text-white"
+                        : "text-[#6366F1] hover:text-white"
+                    }`
+                  }
+                >
+                  <FaTachometerAlt className="mr-2 text-current transition-colors duration-300" />
+                  Dashboard
+                </NavLink>
+              </li>
+            )}
 
             {user && (
               <li className="group border rounded-md mr-3 hover:bg-primary transition-colors duration-300 ease-in-out flex items-center">

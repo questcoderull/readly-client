@@ -30,6 +30,7 @@ const BlogDetails = () => {
     const blogId = _id;
     const userName = user.displayName;
     const userPhoto = user.photoURL;
+    const userEmail = user.email; // Add user email
     const comment = e.target.comment.value;
 
     if (authorEmail === user?.email) {
@@ -45,6 +46,7 @@ const BlogDetails = () => {
       blogId,
       userName,
       userPhoto,
+      userEmail, // Include userEmail in the comment object
       comment,
       createdAt: new Date(),
     };
