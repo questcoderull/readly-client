@@ -1,39 +1,24 @@
-import React, { useEffect, useState, use } from "react";
+import React, { useEffect, use } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import axios from "axios";
 import Loading from "../Shared/Loading";
 import { Link } from "react-router";
+import useCommentStore from "../../stores/useCommentStore"; // Import Zustand store
 
 const MyComments = () => {
   const { user } = use(AuthContext);
-  const [myComments, setMyComments] = useState([]);
-  const [loading, setLoading] = useState(true);
+
+  // Use Zustand store
+  const { myComments, loading, fetchMyComments } = useCommentStore();
 
   useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        setLoading(true);
+    const loadComments = async () => {
+      if (user) {
         const token = await user.getIdToken();
-        const res = await axios.get(
-          `https://readly-server.vercel.app/my-comments?email=${user?.email}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        setMyComments(res.data);
-      } catch (error) {
-        console.error("Error fetching comments:", error);
-      } finally {
-        setLoading(false);
+        await fetchMyComments(user.email, token);
       }
     };
-
-    if (user) {
-      fetchComments();
-    }
-  }, [user]);
+    loadComments();
+  }, [user, fetchMyComments]);
 
   if (loading) {
     return <Loading />;

@@ -1,41 +1,26 @@
-import React, { useEffect, useState, use } from "react";
+import React, { useEffect, use } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from "react-router";
-import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
-import axios from "axios";
+import { FaEdit, FaEye } from "react-icons/fa";
 import Loading from "../Shared/Loading";
 import { categoryColors } from "../Shared/colors";
+import useBlogStore from "../../stores/useBlogStore"; // Import Zustand store
 
 const MyBlogs = () => {
   const { user } = use(AuthContext);
-  const [myBlogs, setMyBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
+
+  // Use Zustand store instead of local state
+  const { myBlogs, loading, fetchMyBlogs } = useBlogStore();
 
   useEffect(() => {
-    const fetchMyBlogs = async () => {
-      try {
-        setLoading(true);
+    const loadBlogs = async () => {
+      if (user) {
         const token = await user.getIdToken();
-        const res = await axios.get(
-          `https://readly-server.vercel.app/my-blogs?email=${user?.email}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        setMyBlogs(res.data);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-      } finally {
-        setLoading(false);
+        await fetchMyBlogs(user.email, token);
       }
     };
-
-    if (user) {
-      fetchMyBlogs();
-    }
-  }, [user]);
+    loadBlogs();
+  }, [user, fetchMyBlogs]);
 
   if (loading) {
     return <Loading />;
